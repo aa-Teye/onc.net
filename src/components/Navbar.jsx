@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import TranslateButton from './TranslateButton'
+import ThemeSwitcher from './ThemeSwitcher'
 
 const navKeys = [
   { key: 'nav.home',        to: '/' },
@@ -15,7 +16,7 @@ export default function Navbar() {
   const { t } = useTranslation()
   return (
     <header className="fixed top-[4px] left-0 w-full h-16 px-4 flex justify-between items-center bg-surface/70 backdrop-blur-md z-50 border-b border-primary/20 shadow-sm">
-      <NavLink to="/" className="flex items-center">
+      <NavLink to="/" className="flex items-center gap-3">
         <div style={{
           width: '48px',
           height: '48px',
@@ -40,6 +41,10 @@ export default function Navbar() {
             src="/images/logo.png"
           />
         </div>
+        <span className="hidden sm:block text-[15px] font-black text-primary uppercase tracking-tight leading-tight">
+          Overcomers Nation<br />
+          <span className="text-secondary text-[11px] tracking-[0.15em] font-bold">Church</span>
+        </span>
         <style>{`
           @keyframes logoRing {
             0%   { background-position: 0% 50%;   box-shadow: 0 0 12px rgba(255,224,136,0.7), 0 0 28px rgba(255,224,136,0.35); }
@@ -67,11 +72,30 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center gap-3">
+        <ThemeSwitcher />
         <TranslateButton />
-        <button className="bg-secondary text-on-secondary px-4 py-2 text-sm font-bold rounded-lg hover:bg-secondary/90 transition-all active:scale-95">
+        <NavLink
+          to="/live"
+          className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-bold rounded-lg transition-all active:scale-95"
+          style={{ background: 'rgba(255,0,0,0.12)', border: '1px solid rgba(255,0,0,0.25)', color: '#f87171' }}
+        >
+          <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" style={{ animation: 'livePulse 1.5s ease-in-out infinite' }} />
+          Watch Live
+        </NavLink>
+        <NavLink
+          to="/contact"
+          className="bg-secondary text-on-secondary px-4 py-2 text-sm font-bold rounded-lg hover:bg-secondary/90 transition-all active:scale-95"
+        >
           {t('nav.planVisit')}
-        </button>
+        </NavLink>
       </div>
+
+      <style>{`
+        @keyframes livePulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50%       { opacity: 0.4; transform: scale(0.85); }
+        }
+      `}</style>
     </header>
   )
 }

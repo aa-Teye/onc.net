@@ -25,7 +25,7 @@ function Pad({ value, label }) {
           {String(value).padStart(2, '0')}
         </span>
       </div>
-      <span className="text-secondary-fixed text-xs font-bold uppercase tracking-widest mt-2">{label}</span>
+      <span className="text-secondary text-xs font-bold uppercase tracking-widest mt-2">{label}</span>
     </div>
   )
 }
@@ -51,12 +51,10 @@ export default function CountdownSection() {
   }, [])
 
   return (
-    <section className="relative py-20 overflow-hidden" style={{
-      background: 'linear-gradient(135deg, #00113a 0%, #001a50 50%, #00113a 100%)',
-    }}>
-      {/* Background glow */}
+    <section className="relative py-20 overflow-hidden bg-white">
+      {/* Subtle gold glow */}
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(115,92,0,0.2) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(115,92,0,0.05) 0%, transparent 70%)',
       }} />
 
       <div
@@ -68,24 +66,24 @@ export default function CountdownSection() {
           transition: 'opacity 0.7s ease, transform 0.7s ease',
         }}
       >
-        <span className="text-secondary-fixed text-xs font-bold uppercase tracking-[0.3em]">
+        <span className="text-secondary text-xs font-bold uppercase tracking-[0.3em]">
           Don't Miss It
         </span>
-        <h3 className="text-white text-[32px] md:text-[40px] font-extrabold mt-2 mb-3"
+        <h3 className="text-primary text-[32px] md:text-[40px] font-extrabold mt-2 mb-3"
           style={{ letterSpacing: '-0.02em' }}>
           Next Sunday Worship Service
         </h3>
-        <p className="text-white/50 text-sm mb-12 uppercase tracking-widest">
+        <p className="text-on-surface-variant text-sm mb-12 uppercase tracking-widest">
           Every Sunday — 8:00 AM  |  Tesano, Accra, Ghana
         </p>
 
         <div className="flex items-start justify-center gap-4 md:gap-8">
           <Pad value={timeLeft.days}    label="Days" />
-          <span className="text-secondary-fixed text-[40px] font-bold mt-3 leading-none">:</span>
+          <span className="text-secondary text-[40px] font-bold mt-3 leading-none">:</span>
           <Pad value={timeLeft.hours}   label="Hours" />
-          <span className="text-secondary-fixed text-[40px] font-bold mt-3 leading-none">:</span>
+          <span className="text-secondary text-[40px] font-bold mt-3 leading-none">:</span>
           <Pad value={timeLeft.minutes} label="Minutes" />
-          <span className="text-secondary-fixed text-[40px] font-bold mt-3 leading-none">:</span>
+          <span className="text-secondary text-[40px] font-bold mt-3 leading-none">:</span>
           <Pad value={timeLeft.seconds} label="Seconds" />
         </div>
 
@@ -94,7 +92,7 @@ export default function CountdownSection() {
             style={{ background: 'linear-gradient(135deg, #735c00, #ffe088)', color: '#00113a' }}>
             Plan My Visit
           </button>
-          <button className="border border-secondary-fixed text-secondary-fixed px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-secondary-fixed/10 transition-all">
+          <button className="border-2 border-secondary text-secondary px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-secondary/10 transition-all">
             Watch Online
           </button>
         </div>

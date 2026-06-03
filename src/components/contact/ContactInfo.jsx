@@ -43,20 +43,23 @@ export default function ContactInfo() {
             </div>
             <div>
               <p className="text-sm font-bold text-outline">Our Location</p>
-              <p className="text-[18px]">Accra, Ghana - Main Sanctuary</p>
+              <p className="text-[18px] font-semibold">Naa Atta Street, Tesano</p>
+              <p className="text-sm text-outline">Accra, Ghana</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Map */}
-      <div className="w-full aspect-video rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant relative group">
-        <img
-          className="w-full h-full object-cover"
-          alt="Map of Accra, Ghana"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7LnQPub1sqE4jKgLNxRRjoOcynLo-jTuKEHO5-lRwwbZVKW-V0avsHXkZ9PbsGZi164KyU2tfySm5-R4fCbB_bAaKaSorHbg_1_dS7GHyLfembdY89FVR6jeRmZ7aXgpG4xEdCUxkp7ycO4jmPTXdDWOGQn7USYP1cGsQfvbjGSkBb7JxomIwfsQrkW1892LUiSx23tPK3KrMGfBawO2oomTxTFeIF-3rngKNaYLb63HZM4UyPxpKZyjL6R-W8u-nyXQZeKtUY7Js"
+      {/* Google Map embed */}
+      <div className="w-full aspect-video rounded-xl overflow-hidden border border-outline-variant shadow-sm">
+        <iframe
+          title="Overcomers Nation Church Location"
+          src="https://maps.google.com/maps?q=Overcomers+Nation+Church+Naa+Atta+Street+Tesano+Accra+Ghana&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          className="w-full h-full"
+          loading="lazy"
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
         />
-        <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors pointer-events-none" />
       </div>
     </div>
   )

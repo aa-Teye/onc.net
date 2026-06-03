@@ -2,6 +2,7 @@ import Layout from '../components/Layout'
 import ContactHero from '../components/contact/ContactHero'
 import ContactInfo from '../components/contact/ContactInfo'
 import ContactForm from '../components/contact/ContactForm'
+import PlanVisit from '../components/contact/PlanVisit'
 
 export default function Contact() {
   return (
@@ -13,6 +14,7 @@ export default function Contact() {
           <ContactForm />
         </div>
       </div>
+      <PlanVisit />
     </Layout>
   )
 }

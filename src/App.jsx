@@ -6,6 +6,7 @@ import Give from './pages/Give'
 import Ministries from './pages/Ministries'
 import Contact from './pages/Contact'
 import About from './pages/About'
+import Live from './pages/Live'
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/give" element={<Give />} />
         <Route path="/ministries" element={<Ministries />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/live" element={<Live />} />
       </Routes>
     </BrowserRouter>
   )

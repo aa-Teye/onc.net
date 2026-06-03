@@ -1,111 +1,48 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
-const videoBoxes = [
-  { src: '/images/pastor.jpg', label: 'Sunday Message', tag: 'SERMON' },
-  { src: '/images/covered-women.jpg', label: 'Women Ministry', tag: 'MINISTRY' },
-  { src: '/images/children-singing.jpg', label: "Children's Praise", tag: 'KIDS' },
-  { src: '/images/youth-worship.jpg', label: 'Youth Worship', tag: 'YOUTH' },
-  { src: '/images/children-day-1.jpg', label: 'Children Day', tag: 'EVENT' },
-  { src: '/images/youth-group.jpg', label: 'Youth Connect', tag: 'CONNECT' },
-  { src: '/images/children-panel.jpg', label: 'Panel Discussion', tag: 'TEACH' },
-  { src: '/images/preacher.jpg', label: 'Live Service', tag: 'LIVE' },
+const boxes = [
+  { cls: 'w-32 h-32 bg-secondary-fixed', style: { animationDelay: '0s' } },
+  { cls: 'w-48 h-48 bg-white',           style: { animationDelay: '-2s', marginLeft: '10%' } },
+  { cls: 'w-24 h-24 bg-secondary-fixed', style: { animationDelay: '-5s', marginTop: '5%' } },
+  { cls: 'w-64 h-64 bg-white',           style: { animationDelay: '-3s' } },
+  { cls: 'w-40 h-40 bg-secondary-fixed', style: { animationDelay: '-7s', marginLeft: '15%' } },
+  { cls: 'w-32 h-32 bg-white',           style: { animationDelay: '-1s' } },
+  { cls: 'w-56 h-56 bg-secondary-fixed', style: { animationDelay: '-4s', marginTop: '-5%' } },
+  { cls: 'w-36 h-36 bg-white',           style: { animationDelay: '-6s' } },
+  { cls: 'w-44 h-44 bg-secondary-fixed', style: { animationDelay: '-8s', marginLeft: '5%' } },
 ]
-
-function VideoCard({ src, label, tag }) {
-  return (
-    <div
-      className="relative h-full flex-shrink-0 rounded-xl overflow-hidden"
-      style={{ width: '300px', border: '1px solid rgba(255,224,136,0.15)' }}
-    >
-      <img
-        src={src}
-        alt=""
-        className="w-full h-full object-cover"
-        style={{ pointerEvents: 'none', userSelect: 'none' }}
-      />
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0"
-        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, transparent 40%, rgba(0,0,0,0.78) 100%)' }}
-      />
-      {/* Tag badge */}
-      <div
-        className="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-black tracking-widest"
-        style={{ background: 'rgba(115,92,0,0.9)', color: '#ffe088' }}
-      >
-        {tag}
-      </div>
-      {/* Play button */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div
-          className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
-          style={{ background: 'rgba(255,224,136,0.88)', backdropFilter: 'blur(4px)' }}
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#00113a" style={{ marginLeft: '3px' }}>
-            <polygon points="5,3 19,12 5,21" />
-          </svg>
-        </div>
-      </div>
-      {/* Bottom title + progress bar */}
-      <div className="absolute bottom-0 left-0 right-0 px-3 pb-3">
-        <p className="text-white text-xs font-bold truncate">{label}</p>
-        <div className="mt-1.5 h-[3px] rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.15)' }}>
-          <div
-            className="h-full rounded-full"
-            style={{ width: '42%', background: 'linear-gradient(to right, #ffe088, #e9c349)' }}
-          />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function VideoStrip({ reverse = false, speed = 60 }) {
-  const cards = reverse ? [...videoBoxes].reverse() : videoBoxes
-  return (
-    <div
-      className="flex h-full gap-3 absolute top-0 left-0 items-stretch"
-      style={{
-        animation: `heroScroll${reverse ? 'Rev' : ''} ${speed}s linear infinite`,
-        width: 'max-content',
-        paddingTop: '4px',
-        paddingBottom: '4px',
-      }}
-    >
-      {[...cards, ...cards].map((card, i) => (
-        <VideoCard key={i} {...card} />
-      ))}
-    </div>
-  )
-}
 
 export default function HeroSection() {
   const { t } = useTranslation()
-  return (
-    <section className="relative h-full flex items-center justify-center pt-16 overflow-hidden">
 
-      {/* Scrolling video card background */}
-      <div className="absolute inset-0 z-0 overflow-hidden" style={{ height: '100%' }}>
-        <div className="absolute top-0 left-0 w-full overflow-hidden" style={{ height: '51%' }}>
-          <VideoStrip reverse={false} speed={55} />
+  return (
+    <section className="relative min-h-[50vh] flex items-center justify-center pt-16 overflow-hidden">
+
+      {/* ── Background ── */}
+      <div className="absolute inset-0 z-0">
+
+        {/* Base primary colour + animated boxes */}
+        <div className="absolute inset-0 bg-primary overflow-hidden">
+          <div className="absolute inset-0 flex flex-wrap gap-4 p-4 opacity-20">
+            {boxes.map((b, i) => (
+              <div
+                key={i}
+                className={`${b.cls} rounded-xl animate-drift animate-pulse-slow flex-shrink-0`}
+                style={b.style}
+              />
+            ))}
+          </div>
         </div>
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden" style={{ height: '51%' }}>
-          <VideoStrip reverse={true} speed={45} />
-        </div>
+
+        {/* Colour-multiply tint */}
+        <div className="absolute inset-0 bg-primary/60 mix-blend-multiply" />
+
+        {/* Bottom-up gradient fade */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
       </div>
 
-      {/* Dark navy overlay */}
-      <div className="absolute inset-0 z-[1]" style={{
-        background: 'linear-gradient(to bottom, rgba(0,17,58,0.91) 0%, rgba(0,17,58,0.80) 50%, rgba(0,17,58,0.95) 100%)',
-      }} />
-
-      {/* Gold radial glow */}
-      <div className="absolute inset-0 z-[2] pointer-events-none" style={{
-        background: 'radial-gradient(ellipse 70% 55% at 35% 55%, rgba(115,92,0,0.28) 0%, transparent 70%)',
-        animation: 'heroPulse 6s ease-in-out infinite',
-      }} />
-
-      {/* Content */}
+      {/* ── Content ── */}
       <div className="relative z-10 w-full max-w-[1280px] px-8 text-center md:text-left">
         <div className="max-w-3xl">
 
@@ -125,7 +62,7 @@ export default function HeroSection() {
             style={{
               fontSize: 'clamp(40px, 7vw, 72px)',
               letterSpacing: '-0.04em',
-              textShadow: '0 4px 40px rgba(0,0,0,0.7)',
+              textShadow: '0 4px 40px rgba(0,0,0,0.5)',
             }}
           >
             {t('hero.title')}{' '}
@@ -145,8 +82,9 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              className="px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all shadow-xl active:scale-95 rounded-lg"
+            <Link
+              to="/live"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all shadow-xl active:scale-95 rounded-lg"
               style={{
                 background: 'linear-gradient(135deg, #735c00 0%, #ffe088 50%, #735c00 100%)',
                 backgroundSize: '200% auto',
@@ -154,34 +92,31 @@ export default function HeroSection() {
                 animation: 'shimmerBtn 3s linear infinite',
               }}
             >
+              <span
+                className="w-2 h-2 rounded-full bg-red-600 flex-shrink-0"
+                style={{ animation: 'livePulse 1.5s ease-in-out infinite' }}
+              />
               {t('hero.joinOnline')}
-            </button>
-            <button
-              className="border-2 border-secondary-fixed text-secondary-fixed px-8 py-4 rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-secondary-fixed/10 transition-all"
+            </Link>
+            <Link
+              to="/sermons"
+              className="inline-flex items-center justify-center border-2 border-secondary-fixed text-secondary-fixed px-8 py-4 rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-secondary-fixed/10 transition-all"
               style={{ textShadow: '0 0 8px rgba(255,224,136,0.4)' }}
             >
               {t('hero.discoverMore')}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
 
       <style>{`
-        @keyframes heroScroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @keyframes heroScrollRev {
-          0%   { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-        @keyframes heroPulse {
-          0%, 100% { opacity: 0.7; }
-          50%       { opacity: 1; }
-        }
         @keyframes shimmerBtn {
           0%   { background-position: 0% center; }
           100% { background-position: 200% center; }
+        }
+        @keyframes livePulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50%       { opacity: 0.4; transform: scale(0.85); }
         }
       `}</style>
     </section>

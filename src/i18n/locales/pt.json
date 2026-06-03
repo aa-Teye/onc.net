@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre Nós",
+    "sermons": "Sermões",
+    "ministries": "Ministérios",
+    "give": "Dar",
+    "contact": "Contato",
+    "planVisit": "Planear Visita"
+  },
+  "hero": {
+    "location": "Tesano, Accra — Ghana",
+    "title": "Bem-vindo a",
+    "church": "Overcomers Nation",
+    "subtitle": "Levantando um exército de Vencedores para influenciar o mundo através da Fé, do Amor e do Espírito Santo.",
+    "joinOnline": "Junte-se Online",
+    "discoverMore": "Descobrir Mais"
+  },
+  "ticker": { "live": "AO VIVO" },
+  "stats": {
+    "label": "Nossa Pegada Global",
+    "title": "Levantando Vencedores pelas Nações",
+    "years": "Anos de Ministério",
+    "nations": "Nações Alcançadas",
+    "members": "Membros e Crescendo",
+    "lives": "Vidas Transformadas"
+  },
+  "countdown": {
+    "label": "Não Perca",
+    "title": "Próximo Culto de Domingo",
+    "sub": "Todo Domingo — 8h00  |  Tesano, Accra, Ghana",
+    "days": "Dias",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos",
+    "planVisit": "Planear Visita",
+    "watchOnline": "Assistir Online"
+  },
+  "mandate": {
+    "divider": "Nosso Mandato Divino",
+    "body": "Somos uma igreja cristã baseada na Bíblia. Nosso mandato central é levantar um exército de Vencedores que influenciarão seus mundos através do poder do Espírito Santo e das forças da Fé e do Amor."
+  },
+  "leadership": {
+    "divider": "Nossa Liderança",
+    "role": "Pastor Sênior e Visionário",
+    "p1": "Guiado por uma profunda revelação divina, nosso Pastor Sênior dedicou sua vida a levantar um exército de crentes que caminham no domínio.",
+    "p2": "Com uma visão que transcende os limites locais, ele lidera Overcomers Nation com comprometimento com a excelência bíblica.",
+    "p3": "Sob sua liderança, a igreja tornou-se um farol de esperança e um centro de saúde espiritual."
+  },
+  "gallery": { "label": "Nossa Comunidade", "title": "A Vida na ONC" },
+  "globalReach": {
+    "label": "Reino Sem Fronteiras",
+    "title": "Nosso Alcance Global",
+    "sub": "De Accra às nações — Overcomers Nation está levantando um exército que não conhece fronteiras.",
+    "cta": "Parceria com ONC Globalmente"
+  },
+  "testimonies": {
+    "label": "Troféus da Fé",
+    "title": "Eles Venceram",
+    "verse": "\"E eles o venceram pelo sangue do Cordeiro e pela palavra do seu testemunho.\" — Ap 12:11"
+  },
+  "prayer": {
+    "floatBtn": "Orar Conosco",
+    "label": "Estamos com Você",
+    "title": "Enviar Pedido de Oração",
+    "name": "Seu Nome",
+    "namePlaceholder": "Nome Completo",
+    "email": "Email (opcional)",
+    "emailPlaceholder": "seu@email.com",
+    "request": "Seu Pedido de Oração",
+    "requestPlaceholder": "Compartilhe sua necessidade de oração...",
+    "submit": "Enviar Pedido",
+    "successTitle": "Seu pedido foi recebido.",
+    "successSub": "Nossa equipe de oração intercederá por você."
+  },
+  "footer": {
+    "tagline": "Construindo uma nação de vencedores através da palavra de fé sem compromissos.",
+    "serviceTimes": "Horários dos Cultos",
+    "contact": "Contato",
+    "facebook": "Facebook",
+    "youtube": "YouTube",
+    "copyright": "© 2024 Overcomers Nation Church. Todos os direitos reservados."
+  },
+  "about": {
+    "heroLabel": "Parceria",
+    "heroSub": "Fundado na verdade inabalável do Evangelho, unindo a sabedoria da tradição com o fogo da próxima geração.",
+    "missionLabel": "A Missão",
+    "missionTitle": "Capacitando o Vencedor em Você",
+    "missionBody": "Levantar uma geração de crentes que caminham na plenitude de sua autoridade divina, equipados para impactar cada esfera da sociedade para o Reino de Deus.",
+    "visionLabel": "A Visão",
+    "visionTitle": "Uma Nação Global de Soberania",
+    "visionBody": "Tornar-se um farol mundial de luz, transformando cidades e nações através da presença manifesta de Deus.",
+    "valuesTitle": "Valores Fundamentais",
+    "valuesSub": "Os pilares que sustentam nosso movimento e definem nossa cultura.",
+    "integrity": "Integridade",
+    "integrityBody": "Operamos com transparência inabalável e padrões bíblicos.",
+    "vitality": "Vitalidade",
+    "vitalityBody": "Abraçamos o movimento enérgico do Espírito Santo.",
+    "excellence": "Excelência",
+    "excellenceBody": "A precisão em tudo o que fazemos reflete a majestade do Criador.",
+    "ctaTitle": "Experiencie a Nação",
+    "ctaSub": "Junte-se a nós para o próximo culto e descubra o que significa viver como um verdadeiro vencedor.",
+    "joinService": "Participar de um Culto",
+    "contactUs": "Entre em Contato"
+  },
+  "sermons": {
+    "featuredLabel": "Mensagem em Destaque", "featuredLocation": "Ao Vivo de Accra",
+    "featuredTitle": "O Poder da Fé Inabalável", "featuredSub": "Junte-se a nós para esta mensagem transformadora.",
+    "watchNow": "Assistir Agora", "viewSeries": "Ver Série",
+    "allMessages": "Todas as Mensagens", "prophetic": "Profético",
+    "leadership": "Liderança", "family": "Família", "finance": "Finanças do Reino",
+    "searchPlaceholder": "Pesquisar sermões...", "archivesLabel": "Arquivos Recentes",
+    "archivesTitle": "Últimas Mensagens", "viewAll": "Ver Todos os Arquivos",
+    "seriesLabel": "Arquivo Digital", "seriesTitle": "Séries de Mensagens",
+    "newsletterTitle": "Nunca Perca uma Palavra",
+    "newsletterSub": "Assine nosso resumo semanal de mídia.",
+    "emailPlaceholder": "Endereço de Email", "subscribe": "Assinar"
+  },
+  "give": {
+    "heroLabel": "Mordomia Fiel", "heroTitle": "Honrando a Deus Através do Dom",
+    "heroSub": "Sua generosidade nos permite alcançar nações e restaurar vidas.",
+    "heartTitle": "O Coração do Dar",
+    "verse": "\"Cada um contribua segundo propôs no coração; não com tristeza, nem por necessidade; porque Deus ama o doador alegre.\"",
+    "verseRef": "— 2 Coríntios 9:7",
+    "partnershipTitle": "Parceria", "partnershipBody": "O primeiro décimo do nosso aumento.",
+    "offeringTitle": "Oferta", "offeringBody": "Dons sacrificiais além do dízimo.",
+    "methodsTitle": "Escolha seu Método", "methodsSub": "Formas seguras de apoiar o ministério.",
+    "onlineTitle": "Doação Online", "onlineBody": "Doação rápida e segura por cartão.",
+    "onlineBtn": "Dar Online", "mobileTitle": "Dinheiro Móvel",
+    "mobileBody": "Suporte direto via MTN ou Telecel.", "mobileBtn": "Ver Instruções",
+    "bankTitle": "Transferência Bancária", "bankBody": "Transferências diretas para parceiros.",
+    "copyBtn": "Copiar Detalhes", "copiedBtn": "Copiado!",
+    "securityTitle": "Sua Segurança é Nossa Prioridade", "securityBody": "Todas as transações são criptografadas.",
+    "ctaTitle": "Precisa de Ajuda para Dar?", "ctaSub": "Nossa equipe financeira está aqui para ajudar.",
+    "contactFinance": "Contatar Equipe Financeira", "downloadReport": "Baixar Relatório"
+  },
+  "contact": {
+    "heroTitle": "Contate-Nos", "heroSub": "Estamos aqui para caminhar com você.",
+    "communityTitle": "Junte-se à Nossa Comunidade", "serviceTimes": "Horários dos Cultos",
+    "sunday": "Culto de Domingo", "sundayTime": "8h00",
+    "tuesday": "Serviço de Terça", "tuesdayTime": "18h30",
+    "phoneLabel": "Número de Telefone", "locationLabel": "Nossa Localização",
+    "location": "Accra, Ghana - Santuário Principal",
+    "formTitle": "Enviar uma Mensagem", "fullName": "Nome Completo",
+    "namePlaceholder": "Digite seu nome", "emailLabel": "Endereço de Email",
+    "emailPlaceholder": "Digite seu email", "subject": "Assunto",
+    "general": "Consulta Geral", "prayer": "Pedido de Oração",
+    "counseling": "Aconselhamento", "ministry": "Informação do Ministério",
+    "message": "Sua Mensagem", "messagePlaceholder": "Como podemos ajudá-lo?",
+    "submit": "Enviar Mensagem", "successMsg": "Obrigado! Responderemos em breve."
+  },
+  "ministries": {
+    "heroTitle": "Nossos Ministérios", "heroSub": "Capacitando cada geração para vencer e liderar.",
+    "youthTag": "Juventude", "youthTitle": "O Refúgio",
+    "youthBody": "Nosso ministério jovem é um centro vibrante para adolescentes e jovens adultos.",
+    "youthBtn": "Juntar-se à Gen Radical",
+    "childrenTag": "Crianças", "childrenTitle": "Igreja das Crianças ONC",
+    "childrenBody": "Ambiente seguro onde crianças de 2 a 12 anos aprendem histórias bíblicas.",
+    "childrenBtn": "Registrar Criança",
+    "menTag": "Homens", "menTitle": "Os Homens Fiéis",
+    "menBody": "Dedicado a construir homens piedosos de integridade e força.",
+    "menBtn": "Conectar-se",
+    "womenTag": "Mulheres", "womenTitle": "Rede de Mulheres Cobertas",
+    "womenBody": "Uma comunidade de mulheres comprometidas com o crescimento espiritual.",
+    "womenBtn": "Juntar-se à Irmandade",
+    "ctaTitle": "Encontre seu Lugar na Família",
+    "ctaSub": "Não importa onde você esteja em sua jornada, há uma comunidade esperando por você.",
+    "ctaContact": "Contate-Nos", "ctaGroups": "Ver Todos os Grupos"
+  }
+}

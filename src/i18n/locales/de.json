@@ -1,0 +1,171 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über Uns",
+    "sermons": "Predigten",
+    "ministries": "Ministerien",
+    "give": "Spenden",
+    "contact": "Kontakt",
+    "planVisit": "Besuch Planen"
+  },
+  "hero": {
+    "location": "Tesano, Accra — Ghana",
+    "title": "Willkommen bei",
+    "church": "Overcomers Nation",
+    "subtitle": "Eine Armee von Überwindern aufzubauen, um die Welt durch Glauben, Liebe und den Heiligen Geist zu beeinflussen.",
+    "joinOnline": "Online Teilnehmen",
+    "discoverMore": "Mehr Entdecken"
+  },
+  "ticker": { "live": "LIVE" },
+  "stats": {
+    "label": "Unser Globaler Fußabdruck",
+    "title": "Überwinder über alle Nationen Aufbauen",
+    "years": "Jahre des Dienstes",
+    "nations": "Erreichte Nationen",
+    "members": "Mitglieder & Wachsend",
+    "lives": "Verwandelte Leben"
+  },
+  "countdown": {
+    "label": "Verpassen Sie Es Nicht",
+    "title": "Nächster Sonntagsgottesdienst",
+    "sub": "Jeden Sonntag — 8:00 Uhr  |  Tesano, Accra, Ghana",
+    "days": "Tage",
+    "hours": "Stunden",
+    "minutes": "Minuten",
+    "seconds": "Sekunden",
+    "planVisit": "Meinen Besuch Planen",
+    "watchOnline": "Online Ansehen"
+  },
+  "mandate": {
+    "divider": "Unser Göttliches Mandat",
+    "body": "Wir sind eine bibelbasierte christliche Kirche. Unser zentrales Mandat ist es, eine Armee von Überwindern aufzubauen, die ihre Welt durch die Kraft des Heiligen Geistes beeinflussen."
+  },
+  "leadership": {
+    "divider": "Unsere Führung",
+    "role": "Leitender Pastor & Visionär",
+    "p1": "Geleitet durch eine tiefe göttliche Offenbarung hat unser Leitender Pastor sein Leben dem Aufbau einer Armee von Gläubigen gewidmet.",
+    "p2": "Mit einer Vision, die lokale Grenzen überschreitet, leitet er Overcomers Nation mit einem Engagement für biblische Exzellenz.",
+    "p3": "Unter seiner Führung ist die Kirche zu einem Leuchtturm der Hoffnung geworden."
+  },
+  "gallery": { "label": "Unsere Gemeinschaft", "title": "Leben bei ONC" },
+  "globalReach": {
+    "label": "Reich Ohne Grenzen",
+    "title": "Unsere Globale Reichweite",
+    "sub": "Von Accra bis in die Nationen — Overcomers Nation baut eine Armee auf, die keine Grenzen kennt.",
+    "cta": "Global mit ONC Zusammenarbeiten"
+  },
+  "testimonies": {
+    "label": "Trophäen des Glaubens",
+    "title": "Sie Haben Überwunden",
+    "verse": "\"Und sie haben ihn überwunden durch des Lammes Blut und durch das Wort ihres Zeugnisses.\" — Offb 12:11"
+  },
+  "prayer": {
+    "floatBtn": "Mit Uns Beten",
+    "label": "Wir Stehen bei Ihnen",
+    "title": "Gebetsanliegen Einreichen",
+    "name": "Ihr Name",
+    "namePlaceholder": "Vollständiger Name",
+    "email": "E-Mail (optional)",
+    "emailPlaceholder": "ihre@email.de",
+    "request": "Ihr Gebetsanliegen",
+    "requestPlaceholder": "Teilen Sie Ihr Gebetsanliegen...",
+    "submit": "Anliegen Einreichen",
+    "successTitle": "Ihr Anliegen wurde empfangen.",
+    "successSub": "Unser Gebetsteam wird für Sie eintreten."
+  },
+  "footer": {
+    "tagline": "Eine Nation von Gewinnern durch das kompromisslose Wort des Glaubens aufbauen.",
+    "serviceTimes": "Gottesdienstzeiten",
+    "contact": "Kontakt",
+    "facebook": "Facebook",
+    "youtube": "YouTube",
+    "copyright": "© 2024 Overcomers Nation Church. Alle Rechte vorbehalten."
+  },
+  "about": {
+    "heroLabel": "Partnerschaft",
+    "heroSub": "Gegründet auf der unerschütterlichen Wahrheit des Evangeliums.",
+    "missionLabel": "Die Mission",
+    "missionTitle": "Den Überwinder in Ihnen Stärken",
+    "missionBody": "Eine Generation von Gläubigen aufzubauen, die in der Fülle ihrer göttlichen Autorität wandeln.",
+    "visionLabel": "Die Vision",
+    "visionTitle": "Eine Globale Nation der Souveränität",
+    "visionBody": "Ein weltweites Leuchtfeuer des Lichts zu werden, das Städte und Nationen durch die manifeste Gegenwart Gottes transformiert.",
+    "valuesTitle": "Grundwerte",
+    "valuesSub": "Die Säulen, die unsere Bewegung tragen und unsere Kultur definieren.",
+    "integrity": "Integrität",
+    "integrityBody": "Wir handeln mit unerschütterlicher Transparenz und biblischen Standards.",
+    "vitality": "Vitalität",
+    "vitalityBody": "Wir umarmen die energetische Bewegung des Heiligen Geistes.",
+    "excellence": "Exzellenz",
+    "excellenceBody": "Präzision in allem, was wir tun, spiegelt die Majestät des Schöpfers wider.",
+    "ctaTitle": "Erleben Sie die Nation",
+    "ctaSub": "Kommen Sie zu unserem nächsten Gottesdienst und entdecken Sie, was es bedeutet, als wahrer Überwinder zu leben.",
+    "joinService": "An einem Gottesdienst Teilnehmen",
+    "contactUs": "Kontaktieren Sie Uns"
+  },
+  "sermons": {
+    "featuredLabel": "Ausgewählte Botschaft", "featuredLocation": "Live aus Accra",
+    "featuredTitle": "Die Kraft des Unerschütterlichen Glaubens",
+    "featuredSub": "Schließen Sie sich uns für diese transformative Botschaft an.",
+    "watchNow": "Jetzt Ansehen", "viewSeries": "Serie Ansehen",
+    "allMessages": "Alle Botschaften", "prophetic": "Prophetisch",
+    "leadership": "Führung", "family": "Familie", "finance": "Reichsfinanzen",
+    "searchPlaceholder": "Predigten suchen...", "archivesLabel": "Aktuelle Archive",
+    "archivesTitle": "Neueste Botschaften", "viewAll": "Alle Archive Anzeigen",
+    "seriesLabel": "Digitales Archiv", "seriesTitle": "Botschaftsserien",
+    "newsletterTitle": "Verpassen Sie Kein Wort",
+    "newsletterSub": "Abonnieren Sie unsere wöchentliche Medienübersicht.",
+    "emailPlaceholder": "E-Mail-Adresse", "subscribe": "Abonnieren"
+  },
+  "give": {
+    "heroLabel": "Treue Verwaltung", "heroTitle": "Gott Durch Geben Ehren",
+    "heroSub": "Ihre Großzügigkeit ermöglicht es uns, Nationen zu erreichen und Leben zu erneuern.",
+    "heartTitle": "Das Herz des Gebens",
+    "verse": "\"Ein jeder gebe, wie er's sich im Herzen vorgenommen hat, nicht mit Unwillen oder aus Zwang; denn einen fröhlichen Geber hat Gott lieb.\"",
+    "verseRef": "— 2. Korinther 9:7",
+    "partnershipTitle": "Partnerschaft", "partnershipBody": "Der erste Zehnte unseres Einkommens.",
+    "offeringTitle": "Opfergabe", "offeringBody": "Opfervolle Gaben über den Zehnten hinaus.",
+    "methodsTitle": "Wählen Sie Ihre Methode", "methodsSub": "Sichere Wege zur Unterstützung des Dienstes.",
+    "onlineTitle": "Online Spenden", "onlineBody": "Schnelles und sicheres Spenden per Karte.",
+    "onlineBtn": "Online Spenden", "mobileTitle": "Mobiles Geld",
+    "mobileBody": "Direkte Unterstützung über MTN oder Telecel.", "mobileBtn": "Anleitung Ansehen",
+    "bankTitle": "Banküberweisung", "bankBody": "Direkte Überweisungen für Partner.",
+    "copyBtn": "Details Kopieren", "copiedBtn": "Kopiert!",
+    "securityTitle": "Ihre Sicherheit Hat Priorität", "securityBody": "Alle Transaktionen sind verschlüsselt.",
+    "ctaTitle": "Brauchen Sie Hilfe beim Spenden?", "ctaSub": "Unser Finanzteam steht Ihnen zur Verfügung.",
+    "contactFinance": "Finanzteam Kontaktieren", "downloadReport": "Bericht Herunterladen"
+  },
+  "contact": {
+    "heroTitle": "Kontaktieren Sie Uns", "heroSub": "Wir sind hier, um mit Ihnen auf Ihrem Weg zu gehen.",
+    "communityTitle": "Treten Sie Unserer Gemeinschaft Bei", "serviceTimes": "Gottesdienstzeiten",
+    "sunday": "Sonntagsgottesdienst", "sundayTime": "8:00 Uhr",
+    "tuesday": "Dienstagsgottesdienst", "tuesdayTime": "18:30 Uhr",
+    "phoneLabel": "Telefonnummer", "locationLabel": "Unser Standort",
+    "location": "Accra, Ghana - Hauptheiligtum",
+    "formTitle": "Eine Nachricht Senden", "fullName": "Vollständiger Name",
+    "namePlaceholder": "Geben Sie Ihren Namen ein", "emailLabel": "E-Mail-Adresse",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail ein", "subject": "Betreff",
+    "general": "Allgemeine Anfrage", "prayer": "Gebetsanliegen",
+    "counseling": "Beratung", "ministry": "Ministeriumsinformationen",
+    "message": "Ihre Nachricht", "messagePlaceholder": "Wie können wir Ihnen helfen?",
+    "submit": "Nachricht Senden", "successMsg": "Danke! Wir werden uns bald bei Ihnen melden."
+  },
+  "ministries": {
+    "heroTitle": "Unsere Ministerien", "heroSub": "Jede Generation befähigen zu überwinden und zu führen.",
+    "youthTag": "Jugend", "youthTitle": "Das Refugium",
+    "youthBody": "Unser Jugendministerium ist ein lebendiges Zentrum für Teenager und junge Erwachsene.",
+    "youthBtn": "Der Radikalen Gen Beitreten",
+    "childrenTag": "Kinder", "childrenTitle": "ONC Kinderkirche",
+    "childrenBody": "Eine sichere Umgebung, in der Kinder von 2 bis 12 Jahren biblische Geschichten lernen.",
+    "childrenBtn": "Kind Anmelden",
+    "menTag": "Männer", "menTitle": "Die Treuen Männer",
+    "menBody": "Gewidmet dem Aufbau gottesfürchtiger Männer der Integrität und Stärke.",
+    "menBtn": "Verbinden",
+    "womenTag": "Frauen", "womenTitle": "Netzwerk der Bedeckten Frauen",
+    "womenBody": "Eine Gemeinschaft von Frauen, die dem geistlichen Wachstum verpflichtet sind.",
+    "womenBtn": "Der Schwesternschaft Beitreten",
+    "ctaTitle": "Finden Sie Ihren Platz in der Familie",
+    "ctaSub": "Egal wo Sie auf Ihrer Reise sind, eine Gemeinschaft wartet auf Sie.",
+    "ctaContact": "Kontaktieren Sie Uns", "ctaGroups": "Alle Gruppen Ansehen"
+  }
+}

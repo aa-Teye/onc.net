@@ -5,7 +5,6 @@ import CountdownSection from '../components/CountdownSection'
 import MandateSection from '../components/MandateSection'
 import LeadershipSection from '../components/LeadershipSection'
 import GallerySection from '../components/GallerySection'
-import GlobalReach from '../components/GlobalReach'
 import TestimoniesSlider from '../components/TestimoniesSlider'
 import MediaSection from '../components/MediaSection'
 
@@ -26,9 +25,6 @@ export default function Home() {
 
       {/* Gallery */}
       <GallerySection />
-
-      {/* Global Reach */}
-      <GlobalReach />
 
       {/* Testimonies */}
       <TestimoniesSlider />

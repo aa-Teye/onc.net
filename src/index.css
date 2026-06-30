@@ -130,16 +130,3 @@
   animation-play-state: paused;
 }
 
-/* ── Purple theme overrides ──────────────────────────────────────────── */
-[data-theme="purple"] {
-  --color-primary:                  #2d0060;
-  --color-primary-container:        #4e0099;
-  --color-on-primary-fixed:         #2d0060;
-  --color-primary-fixed:            #ecdcff;
-  --color-primary-fixed-dim:        #d4aaff;
-  --color-on-primary-container:     #d4aaff;
-  --color-inverse-primary:          #b86fff;
-  --color-on-primary-fixed-variant: #4e0099;
-  --color-surface-tint:             #7030c8;
-}
-/* ─────────────────────────────────────────────────────────────────────── */

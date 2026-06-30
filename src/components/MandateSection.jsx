@@ -19,7 +19,7 @@ export default function MandateSection() {
               <img
                 alt="A diverse and joyful group of modern believers gathered in a bright sanctuary."
                 className="w-full h-full object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeuv7IRplU3XCOvC8stkhNXGXmWmp50kCfRTL6f0OF7sByLe57PgpFfVFhAg1myqjo91lJGstiARC4FP6xCUEiPISqSwQEfI30xFfYxlRZhiDoS-QCJHDyixoZVowzJgUcqQboL6M2RA8ME_1hvF824aQvrbX8wmyjAMUg_b1ESIN4LwznFqAKLNZB9Kz586TQXzy-Gdf_oscqMBr2I68azY8n3XS2B90fmrnCu5itTtzJ66t0yuuPXfCaWbYRqWcqQWu-KIxmqIp3"
+                src="/images/preacher.jpg"
               />
             </div>
           </div>

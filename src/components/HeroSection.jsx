@@ -1,122 +1,161 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-const boxes = [
-  { cls: 'w-32 h-32 bg-secondary-fixed', style: { animationDelay: '0s' } },
-  { cls: 'w-48 h-48 bg-white',           style: { animationDelay: '-2s', marginLeft: '10%' } },
-  { cls: 'w-24 h-24 bg-secondary-fixed', style: { animationDelay: '-5s', marginTop: '5%' } },
-  { cls: 'w-64 h-64 bg-white',           style: { animationDelay: '-3s' } },
-  { cls: 'w-40 h-40 bg-secondary-fixed', style: { animationDelay: '-7s', marginLeft: '15%' } },
-  { cls: 'w-32 h-32 bg-white',           style: { animationDelay: '-1s' } },
-  { cls: 'w-56 h-56 bg-secondary-fixed', style: { animationDelay: '-4s', marginTop: '-5%' } },
-  { cls: 'w-36 h-36 bg-white',           style: { animationDelay: '-6s' } },
-  { cls: 'w-44 h-44 bg-secondary-fixed', style: { animationDelay: '-8s', marginLeft: '5%' } },
+const announcements = [
+  'Sunday Worship Service — 8:00 AM  |  Tesano, Accra, Ghana',
+  'Tuesday Midweek Service — 6:30 PM',
+  'Mandate Miracle Encounter Service — Join Us Every Week',
+  "Children's Church — Every Sunday during service",
+  'Covered Women Network — Quarterly Retreat coming soon',
+  'The Haven Youth Ministry — Fridays 6:00 PM',
+  'ONBI Enrolment Now Open — Contact us to register',
+  'Overcomers Nation — Tesano, Accra, Ghana  |  +233 54 636 3957',
 ]
+const tickerText = announcements.join('          ///          ')
 
 export default function HeroSection() {
   const { t } = useTranslation()
 
   return (
-    <section className="relative min-h-[50vh] flex items-center justify-center pt-16 overflow-hidden">
+    <section
+      className="relative flex flex-col overflow-hidden"
+      style={{ height: '100vh', background: '#00113a' }}
+    >
+      {/* Background photo */}
+      <img
+        src="/images/mandate.jpg"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: '90% 28%', opacity: 0.5 }}
+      />
 
-      {/* ── Background ── */}
-      <div className="absolute inset-0 z-0">
+      {/* Left-to-right dark gradient */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(90deg, #00113a 30%, rgba(0,17,58,0.72) 60%, rgba(0,17,58,0.45) 100%)',
+        }}
+      />
 
-        {/* Base primary colour + animated boxes */}
-        <div className="absolute inset-0 bg-primary overflow-hidden">
-          <div className="absolute inset-0 flex flex-wrap gap-4 p-4 opacity-20">
-            {boxes.map((b, i) => (
-              <div
-                key={i}
-                className={`${b.cls} rounded-xl animate-drift animate-pulse-slow flex-shrink-0`}
-                style={b.style}
-              />
-            ))}
-          </div>
-        </div>
+      {/* Bottom-up fade */}
+      <div
+        className="absolute inset-0"
+        style={{ background: 'linear-gradient(0deg, #00113a 8%, transparent 50%)' }}
+      />
 
-        {/* Colour-multiply tint */}
-        <div className="absolute inset-0 bg-primary/60 mix-blend-multiply" />
+      {/* Main content — grows to fill available space, centers vertically */}
+      <div className="relative z-10 flex-1 flex items-center w-full max-w-[1600px] mx-auto px-8 md:px-16">
+        <div style={{ maxWidth: '820px' }}>
 
-        {/* Bottom-up gradient fade */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
-      </div>
-
-      {/* ── Content ── */}
-      <div className="relative z-10 w-full max-w-[1280px] px-8 text-center md:text-left">
-        <div className="max-w-3xl">
-
-          <div className="inline-flex items-center gap-2 mb-6">
-            <span className="w-8 h-px bg-secondary-fixed opacity-80" />
+          {/* Location label */}
+          <div className="inline-flex items-center gap-3 mb-8">
+            <span className="w-10 h-px" style={{ background: '#e9c349' }} />
             <span
-              className="text-secondary-fixed text-xs font-bold uppercase tracking-[0.3em]"
-              style={{ textShadow: '0 0 10px rgba(255,224,136,0.7)' }}
+              className="font-bold uppercase"
+              style={{ color: '#e9c349', fontSize: '13px', letterSpacing: '0.28em' }}
             >
               {t('hero.location')}
             </span>
-            <span className="w-8 h-px bg-secondary-fixed opacity-80" />
           </div>
 
-          <h2
-            className="font-black text-white mb-6 leading-tight"
+          {/* Headline */}
+          <h1
+            className="font-black text-white mb-8"
             style={{
-              fontSize: 'clamp(40px, 7vw, 72px)',
+              fontSize: 'clamp(48px, 5.5vw, 100px)',
               letterSpacing: '-0.04em',
-              textShadow: '0 4px 40px rgba(0,0,0,0.5)',
+              lineHeight: 1.02,
             }}
           >
-            {t('hero.title')}{' '}
-            <span style={{
-              background: 'linear-gradient(135deg, #ffe088 0%, #e9c349 40%, #ffb77d 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              filter: 'drop-shadow(0 0 16px rgba(255,224,136,0.5))',
-            }}>
-              {t('hero.church')}
-            </span>
-          </h2>
+            {t('hero.title')}<br />
+            <span style={{ color: '#fed65b' }}>{t('hero.church')}</span>
+          </h1>
 
-          <p className="text-[18px] font-normal text-white/80 mb-10 max-w-2xl leading-relaxed">
+          {/* Subtitle */}
+          <p
+            className="mb-12 leading-relaxed"
+            style={{
+              color: '#dbe1ff',
+              fontSize: 'clamp(17px, 1.6vw, 26px)',
+              lineHeight: 1.55,
+              maxWidth: '580px',
+            }}
+          >
             {t('hero.subtitle')}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* CTAs */}
+          <div className="flex flex-wrap gap-5">
             <Link
               to="/live"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all shadow-xl active:scale-95 rounded-lg"
+              className="inline-flex items-center gap-3 font-extrabold rounded-xl transition-all active:scale-95"
               style={{
-                background: 'linear-gradient(135deg, #735c00 0%, #ffe088 50%, #735c00 100%)',
-                backgroundSize: '200% auto',
+                background: '#fed65b',
                 color: '#00113a',
-                animation: 'shimmerBtn 3s linear infinite',
+                fontSize: 'clamp(14px, 1.1vw, 18px)',
+                padding: 'clamp(14px, 1.2vw, 20px) clamp(26px, 2vw, 38px)',
               }}
             >
               <span
-                className="w-2 h-2 rounded-full bg-red-600 flex-shrink-0"
-                style={{ animation: 'livePulse 1.5s ease-in-out infinite' }}
+                className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                style={{ background: '#d12c2c', animation: 'livePulse 1.5s ease-in-out infinite' }}
               />
               {t('hero.joinOnline')}
             </Link>
+
             <Link
               to="/sermons"
-              className="inline-flex items-center justify-center border-2 border-secondary-fixed text-secondary-fixed px-8 py-4 rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-secondary-fixed/10 transition-all"
-              style={{ textShadow: '0 0 8px rgba(255,224,136,0.4)' }}
+              className="inline-flex items-center gap-2 font-bold rounded-xl transition-all active:scale-95"
+              style={{
+                border: '1.5px solid rgba(233,195,73,0.55)',
+                color: '#fed65b',
+                fontSize: 'clamp(14px, 1.1vw, 18px)',
+                padding: 'clamp(14px, 1.2vw, 20px) clamp(26px, 2vw, 38px)',
+              }}
             >
               {t('hero.discoverMore')}
+              <span className="material-symbols-outlined" style={{ fontSize: 'clamp(16px, 1.2vw, 22px)' }}>arrow_forward</span>
             </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Ticker — pinned to bottom of hero */}
+      <div className="relative z-10 bg-primary border-t-2 border-b-2 overflow-hidden" style={{ borderColor: '#fed65b', paddingTop: '10px', paddingBottom: '10px' }}>
+        {/* Left fade */}
+        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, #00113a, transparent)' }} />
+        {/* Right fade */}
+        <div className="absolute right-0 top-0 h-full w-20 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to left, #00113a, transparent)' }} />
+        {/* LIVE label */}
+        <div className="absolute left-0 top-0 h-full flex items-center z-20 px-4" style={{ background: '#fed65b' }}>
+          <span style={{ color: '#00113a', fontSize: '11px', fontWeight: 900, letterSpacing: '0.22em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>LIVE</span>
+        </div>
+
+        <div className="flex whitespace-nowrap pl-16">
+          <div style={{ animation: 'oncTicker 55s linear infinite', display: 'flex' }}>
+            <span className="text-white text-sm font-semibold uppercase px-8"
+              style={{ letterSpacing: '0.12em', textShadow: '0 0 12px rgba(255,224,136,0.5)' }}>
+              {tickerText}
+            </span>
+            <span className="text-white text-sm font-semibold uppercase px-8"
+              style={{ letterSpacing: '0.12em', textShadow: '0 0 12px rgba(255,224,136,0.5)' }}
+              aria-hidden="true">
+              {tickerText}
+            </span>
           </div>
         </div>
       </div>
 
       <style>{`
-        @keyframes shimmerBtn {
-          0%   { background-position: 0% center; }
-          100% { background-position: 200% center; }
-        }
         @keyframes livePulse {
           0%, 100% { opacity: 1; transform: scale(1); }
           50%       { opacity: 0.4; transform: scale(0.85); }
+        }
+        @keyframes oncTicker {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
       `}</style>
     </section>

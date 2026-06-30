@@ -1,21 +1,21 @@
 const messages = [
   {
-    title: 'THE CONCEPT OF DOMINION SERIES',
-    date: 'Sun, Oct 24 • Senior Pastor',
+    title: 'The Concept of Dominion',
+    date: 'Sun, Oct 24 · Senior Pastor',
     badge: 'New Release',
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDuX3RFmdpPqu6876aW4DzMQZyR6kamue7-NOJ_WM5ZFdli9OPhGJNcqxS-Vz-wRQvhnWDYJZFCuDGpdj66nTUehyvbvhrGmJ2eZ30OmFphS-DLxg2hwQcC2vkx0qRYTCFCg41zMOh8IiETP1-k5psY3BajvN1nVycEkj3ddaizJjPGVyjLZj5PQJggHGLKGWmzEAfihsVkds6FIyhPRcOXlyJYGmdh2n9ZTuk74d3sneoRFicq9RaLvuW1fMxWAtML-tgp0G959wWH',
+    src: '/images/youth-worship.jpg',
   },
   {
-    title: 'THE PURSUIT OF LOVE',
-    date: 'Wed, Oct 20 • Faith Seminar',
+    title: 'The Pursuit of Love',
+    date: 'Wed, Oct 20 · Faith Seminar',
     badge: null,
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD1z7RnDsVOhoY2b2SjRwZswTXRJuUomWQWVFChFbn-GSZQVHolfsblKfDnvUUQH8deN4tKZeU7mWtdvHJPEyGyIQhP3LsE0O8NeFviDChgcRDi6k8c8z94LtF-Bni3iaauZL15Pn8pvZ3r0_wdnS-4-sp6iAOsFcdnB3HluvqPhMShWoJH9A1Xpv1rq_jMmAC3sRHKFoKZxQtfxmEpqyCtOW7veN2jFP7EabTROenFuMrg-n6YlmTj52LuXliPUx8Q2DEh6fG6GzE9',
+    src: '/images/covered-women.jpg',
   },
   {
-    title: 'KATARTIZO SPEAKING THE WORD',
-    date: 'Sun, Oct 17 • Spiritual Warfare',
+    title: 'Katartizo — Speaking the Word',
+    date: 'Sun, Oct 17 · Spiritual Warfare',
     badge: null,
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBMFhcaDvG6SdozxtFissvfdeLtLqovnhk4Uw6tzMKZsQxSSZpYv_4yXZRcN4IDXEL7vjS_ue-cRugAHpSGlq_9CfkKrQUwajqaI0dnRrJfmKZ65TxBAfqfkhrIEahOsHrcueJZX9N6dGPNvhc7Yxq2tiGiMfFOa4Xuxgb0rMJ9BpC8PebcNnWhrL9d-4A6E6LNDPDBUdoBuGBsNoNyA2_nz7HH1qLyWFWO96bAHsbdHUJ_8FyuzK8F_ppDQf5oOS7Hv2So6VkSwG5X',
+    src: '/images/children-panel2.jpg',
   },
 ];
 

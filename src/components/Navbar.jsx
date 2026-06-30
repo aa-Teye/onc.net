@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import TranslateButton from './TranslateButton'
-import ThemeSwitcher from './ThemeSwitcher'
 
 const navKeys = [
   { key: 'nav.home',        to: '/' },
@@ -72,7 +71,6 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center gap-3">
-        <ThemeSwitcher />
         <TranslateButton />
         <NavLink
           to="/live"

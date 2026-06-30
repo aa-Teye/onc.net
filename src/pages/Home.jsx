@@ -7,6 +7,7 @@ import LeadershipSection from '../components/LeadershipSection'
 import GallerySection from '../components/GallerySection'
 import TestimoniesSlider from '../components/TestimoniesSlider'
 import MediaSection from '../components/MediaSection'
+import CTASection from '../components/CTASection'
 
 export default function Home() {
   return (
@@ -31,6 +32,9 @@ export default function Home() {
 
       {/* Media / Sermons */}
       <MediaSection />
+
+      {/* CTA */}
+      <CTASection />
     </Layout>
   )
 }

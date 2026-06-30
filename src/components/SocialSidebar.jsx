@@ -1,7 +1,7 @@
 const socials = [
   {
     label: 'YouTube',
-    href: 'https://youtube.com/@overcomersnation',
+    href: 'https://youtube.com/@overcomersnationchurch2041',
     color: '#FF0000',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">

@@ -3,7 +3,7 @@ const platforms = [
     name: 'YouTube',
     tagline: 'Watch & Stream',
     description: 'Full Sunday services, message replays, and our complete video archive. Subscribe so you never miss a service.',
-    href: 'https://youtube.com/@overcomersnation',
+    href: 'https://youtube.com/@overcomersnationchurch2041',
     color: '#FF0000',
     bg: 'rgba(255,0,0,0.07)',
     cta: 'Watch Messages',

@@ -70,7 +70,7 @@ export default function Footer() {
               {[
                 { label: '054 636 3957',    href: 'tel:0546363957' },
                 { label: 'Facebook',         href: '#' },
-                { label: 'YouTube',          href: '#' },
+                { label: 'YouTube',          href: 'https://youtube.com/@overcomersnationchurch2041' },
                 { label: 'Telegram',         href: '#' },
                 { label: 'Podbean',          href: '#' },
               ].map(({ label, href }) => (

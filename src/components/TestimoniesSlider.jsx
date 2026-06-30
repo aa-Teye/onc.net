@@ -1,31 +1,30 @@
 import { useState, useEffect } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
-// ── Replace video IDs with real ONC YouTube testimony video IDs ──
 const videos = [
   {
-    id: 'dQw4w9WgXcQ',
-    name: 'Sister Abena Mensah',
-    role: 'Member — 4 Years',
-    title: 'From Brokenness to Purpose',
+    id: 'dUuIJ3ifXdU',
+    name: 'Overcomers Nation Church',
+    role: 'Teaching',
+    title: 'The Priority of Love – Your Greatest Quest',
   },
   {
-    id: 'dQw4w9WgXcQ',
-    name: 'Brother Kwame Asante',
-    role: 'Microchurch Shepherd',
-    title: 'Faith That Transformed My Business',
+    id: 'uHeNqbxzUYM',
+    name: 'Rev Dr Ebenezer Okronipa',
+    role: 'Teaching',
+    title: 'Understanding Your Worth in Christ',
   },
   {
-    id: 'dQw4w9WgXcQ',
-    name: 'Youth Member — The Haven',
-    role: 'Member — 2 Years',
-    title: 'Finding Identity in Christ',
+    id: 'dUuIJ3ifXdU',
+    name: 'Overcomers Nation Church',
+    role: 'Teaching',
+    title: 'The Priority of Love – Your Greatest Quest',
   },
   {
-    id: 'dQw4w9WgXcQ',
-    name: 'Sister Grace Boateng',
-    role: 'Covered Women Network',
-    title: 'Healed and Whole',
+    id: 'uHeNqbxzUYM',
+    name: 'Rev Dr Ebenezer Okronipa',
+    role: 'Teaching',
+    title: 'Understanding Your Worth in Christ',
   },
 ]
 

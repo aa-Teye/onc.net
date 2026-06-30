@@ -15,16 +15,16 @@ const videos = [
     title: 'Understanding Your Worth in Christ',
   },
   {
-    id: 'dUuIJ3ifXdU',
-    name: 'Overcomers Nation Church',
-    role: 'Teaching',
-    title: 'The Priority of Love – Your Greatest Quest',
-  },
-  {
-    id: 'uHeNqbxzUYM',
+    id: 'ccaQMT3EDx4',
     name: 'Rev Dr Ebenezer Okronipa',
     role: 'Teaching',
-    title: 'Understanding Your Worth in Christ',
+    title: 'The Power in the Name of Jesus',
+  },
+  {
+    id: 'Azb7wu-opAk',
+    name: 'Overcomers Nation Church',
+    role: 'Teaching',
+    title: 'What God Builds, Hell Attacks',
   },
 ]
 

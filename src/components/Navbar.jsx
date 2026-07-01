@@ -80,12 +80,6 @@ export default function Navbar() {
           <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" style={{ animation: 'livePulse 1.5s ease-in-out infinite' }} />
           Watch Live
         </NavLink>
-        <NavLink
-          to="/contact"
-          className="bg-secondary text-on-secondary px-4 py-2 text-sm font-bold rounded-lg hover:bg-secondary/90 transition-all active:scale-95"
-        >
-          {t('nav.planVisit')}
-        </NavLink>
       </div>
 
       <style>{`

@@ -19,13 +19,13 @@ function getNextService() {
 function Pad({ value, label }) {
   return (
     <div className="flex flex-col items-center">
-      <div className="bg-primary/60 border border-secondary/30 rounded-xl px-6 py-4 min-w-[80px] text-center backdrop-blur-sm"
+      <div className="bg-primary/60 border border-secondary/30 rounded-xl px-3 py-2 sm:px-6 sm:py-4 min-w-[60px] sm:min-w-[80px] text-center backdrop-blur-sm"
         style={{ boxShadow: '0 0 20px rgba(255,224,136,0.1)' }}>
-        <span className="text-[42px] md:text-[56px] font-black text-white leading-none">
+        <span className="text-[30px] sm:text-[42px] md:text-[56px] font-black text-white leading-none">
           {String(value).padStart(2, '0')}
         </span>
       </div>
-      <span className="text-secondary text-xs font-bold uppercase tracking-widest mt-2">{label}</span>
+      <span className="text-secondary text-[10px] sm:text-xs font-bold uppercase tracking-widest mt-2">{label}</span>
     </div>
   )
 }
@@ -77,14 +77,14 @@ export default function CountdownSection() {
           Every Sunday — 8:00 AM  |  Tesano, Accra, Ghana
         </p>
 
-        <div className="flex items-start justify-center gap-4 md:gap-8">
+        <div className="flex items-start justify-center gap-1 sm:gap-4 md:gap-8">
           <Pad value={timeLeft.days}    label="Days" />
-          <span className="text-secondary text-[40px] font-bold mt-3 leading-none">:</span>
+          <span className="text-secondary text-[24px] sm:text-[40px] font-bold mt-2 sm:mt-3 leading-none">:</span>
           <Pad value={timeLeft.hours}   label="Hours" />
-          <span className="text-secondary text-[40px] font-bold mt-3 leading-none">:</span>
-          <Pad value={timeLeft.minutes} label="Minutes" />
-          <span className="text-secondary text-[40px] font-bold mt-3 leading-none">:</span>
-          <Pad value={timeLeft.seconds} label="Seconds" />
+          <span className="text-secondary text-[24px] sm:text-[40px] font-bold mt-2 sm:mt-3 leading-none">:</span>
+          <Pad value={timeLeft.minutes} label="Mins" />
+          <span className="text-secondary text-[24px] sm:text-[40px] font-bold mt-2 sm:mt-3 leading-none">:</span>
+          <Pad value={timeLeft.seconds} label="Secs" />
         </div>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12">

@@ -47,17 +47,6 @@ export default function HeroSection() {
       <div className="relative z-10 flex-1 flex items-center w-full max-w-[1600px] mx-auto px-8 md:px-16">
         <div style={{ maxWidth: '820px' }}>
 
-          {/* Location label */}
-          <div className="inline-flex items-center gap-3 mb-8">
-            <span className="w-10 h-px" style={{ background: '#e9c349' }} />
-            <span
-              className="font-bold uppercase"
-              style={{ color: '#e9c349', fontSize: '13px', letterSpacing: '0.28em' }}
-            >
-              {t('hero.location')}
-            </span>
-          </div>
-
           {/* Headline */}
           <h1
             className="font-black text-white mb-8"
@@ -117,6 +106,18 @@ export default function HeroSection() {
               <span className="material-symbols-outlined" style={{ fontSize: 'clamp(16px, 1.2vw, 22px)' }}>arrow_forward</span>
             </Link>
           </div>
+
+          {/* Location — below CTAs, smaller */}
+          <div className="inline-flex items-center gap-2 mt-8">
+            <span className="w-5 h-px" style={{ background: '#e9c349', opacity: 0.7 }} />
+            <span
+              className="font-semibold uppercase"
+              style={{ color: '#e9c349', fontSize: '10px', letterSpacing: '0.22em', opacity: 0.85 }}
+            >
+              {t('hero.location')}
+            </span>
+          </div>
+
         </div>
       </div>
 

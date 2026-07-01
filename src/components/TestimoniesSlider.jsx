@@ -65,9 +65,9 @@ function VideoTab() {
   function selectVideo(i) { setActive(i); setPlaying(false) }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
       {/* Player */}
-      <div className="lg:col-span-8">
+      <div className="w-full lg:col-span-8">
         <div
           key={active}
           className="relative rounded-2xl overflow-hidden shadow-2xl bg-primary aspect-video"
@@ -95,7 +95,7 @@ function VideoTab() {
                 className="absolute inset-0 flex items-center justify-center group"
               >
                 <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center transition-transform group-hover:scale-110"
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 active:scale-95"
                   style={{
                     background: 'linear-gradient(135deg, #735c00, #ffe088)',
                     boxShadow: '0 0 30px rgba(255,224,136,0.5)',
@@ -106,10 +106,10 @@ function VideoTab() {
                   </span>
                 </div>
               </button>
-              <div className="absolute bottom-0 left-0 right-0 p-6"
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6"
                 style={{ background: 'linear-gradient(to top, rgba(0,17,58,0.9), transparent)' }}>
                 <p className="text-secondary-fixed text-xs font-bold uppercase tracking-widest mb-1">{v.role}</p>
-                <h4 className="text-white text-[20px] font-bold">{v.title}</h4>
+                <h4 className="text-white text-[16px] sm:text-[20px] font-bold">{v.title}</h4>
                 <p className="text-white/60 text-sm">{v.name}</p>
               </div>
             </>
@@ -117,35 +117,71 @@ function VideoTab() {
         </div>
       </div>
 
-      {/* Playlist */}
-      <div className="lg:col-span-4 flex flex-col gap-3">
-        <p className="text-xs font-bold text-outline uppercase tracking-widest mb-1">More Testimonies</p>
-        {videos.map((vid, i) => (
-          <button
-            key={i}
-            onClick={() => selectVideo(i)}
-            className={`flex items-center gap-3 p-3 rounded-xl text-left transition-all ${
-              i === active
-                ? 'bg-primary text-on-primary shadow-lg'
-                : 'bg-surface hover:bg-surface-container border border-outline-variant/30'
-            }`}
-          >
-            <div className="relative w-20 h-14 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container">
-              <img
-                src={`https://img.youtube.com/vi/${vid.id}/mqdefault.jpg`}
-                alt={vid.title}
-                className="w-full h-full object-cover"
-              />
-              <div className={`absolute inset-0 flex items-center justify-center ${i === active ? 'bg-primary/30' : 'bg-black/20'}`}>
-                <span className="material-symbols-outlined text-white text-[18px]">play_circle</span>
+      {/* Playlist — horizontal scroll on mobile, vertical sidebar on desktop */}
+      <div className="w-full lg:col-span-4">
+        <p className="text-xs font-bold text-outline uppercase tracking-widest mb-3">More Testimonies</p>
+
+        {/* Mobile: swipeable horizontal row */}
+        <div
+          className="flex lg:hidden gap-3 overflow-x-auto pb-2"
+          style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}
+        >
+          {videos.map((vid, i) => (
+            <button
+              key={i}
+              onClick={() => selectVideo(i)}
+              className={`flex-shrink-0 rounded-xl overflow-hidden text-left transition-all active:scale-95 ${
+                i === active ? 'ring-2 ring-secondary shadow-lg' : 'opacity-80'
+              }`}
+              style={{ minWidth: '150px', scrollSnapAlign: 'start' }}
+            >
+              <div className="relative w-full aspect-video bg-surface-container">
+                <img
+                  src={`https://img.youtube.com/vi/${vid.id}/mqdefault.jpg`}
+                  alt={vid.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className={`absolute inset-0 flex items-center justify-center ${i === active ? 'bg-primary/30' : 'bg-black/30'}`}>
+                  <span className="material-symbols-outlined text-white text-[28px]">play_circle</span>
+                </div>
               </div>
-            </div>
-            <div className="min-w-0">
-              <p className={`text-xs font-bold truncate ${i === active ? 'text-secondary-fixed' : 'text-secondary'}`}>{vid.role}</p>
-              <p className={`text-sm font-bold leading-tight truncate ${i === active ? 'text-white' : 'text-on-surface'}`}>{vid.title}</p>
-            </div>
-          </button>
-        ))}
+              <div className={`px-2 py-2 ${i === active ? 'bg-primary' : 'bg-surface-container'}`}>
+                <p className={`text-[10px] font-bold uppercase tracking-wider truncate ${i === active ? 'text-secondary-fixed' : 'text-secondary'}`}>{vid.role}</p>
+                <p className={`text-xs font-bold leading-snug line-clamp-2 ${i === active ? 'text-white' : 'text-on-surface'}`}>{vid.title}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Desktop: vertical list */}
+        <div className="hidden lg:flex flex-col gap-3">
+          {videos.map((vid, i) => (
+            <button
+              key={i}
+              onClick={() => selectVideo(i)}
+              className={`flex items-center gap-3 p-3 rounded-xl text-left transition-all ${
+                i === active
+                  ? 'bg-primary text-on-primary shadow-lg'
+                  : 'bg-surface hover:bg-surface-container border border-outline-variant/30'
+              }`}
+            >
+              <div className="relative w-20 h-14 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container">
+                <img
+                  src={`https://img.youtube.com/vi/${vid.id}/mqdefault.jpg`}
+                  alt={vid.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className={`absolute inset-0 flex items-center justify-center ${i === active ? 'bg-primary/30' : 'bg-black/20'}`}>
+                  <span className="material-symbols-outlined text-white text-[18px]">play_circle</span>
+                </div>
+              </div>
+              <div className="min-w-0">
+                <p className={`text-xs font-bold truncate ${i === active ? 'text-secondary-fixed' : 'text-secondary'}`}>{vid.role}</p>
+                <p className={`text-sm font-bold leading-tight truncate ${i === active ? 'text-white' : 'text-on-surface'}`}>{vid.title}</p>
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   )

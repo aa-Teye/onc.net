@@ -88,10 +88,15 @@ export default function CountdownSection() {
         </div>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12">
-          <button className="px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-lg active:scale-95 transition-all"
-            style={{ background: 'linear-gradient(135deg, #735c00, #ffe088)', color: '#00113a' }}>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Overcomers+Nation+Church+Naa+Atta+Street+Tesano+Accra+Ghana"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-lg active:scale-95 transition-all text-center"
+            style={{ background: 'linear-gradient(135deg, #735c00, #ffe088)', color: '#00113a' }}
+          >
             Plan My Visit
-          </button>
+          </a>
           <button className="border-2 border-secondary text-secondary px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-secondary/10 transition-all">
             Watch Online
           </button>

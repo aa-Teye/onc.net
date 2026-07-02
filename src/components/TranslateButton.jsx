@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import i18n from '../i18n'
 
 const languages = [
   { code: 'en',    label: 'English',    flag: '🇬🇧' },
@@ -55,6 +56,7 @@ function translatePage(langCode) {
 export default function TranslateButton() {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(() => localStorage.getItem('onc_lang') || 'en')
+  const [translating, setTranslating] = useState(false)
   const ref = useRef(null)
 
   // Wait for Google Translate widget to load, then sync it
@@ -84,6 +86,11 @@ export default function TranslateButton() {
   function select(code) {
     setActive(code)
     setOpen(false)
+    // Instantly swap all t() strings via react-i18next
+    i18n.changeLanguage(code)
+    // Show toast while Google Translate processes the rest of the page
+    setTranslating(true)
+    setTimeout(() => setTranslating(false), 1800)
     translatePage(code)
   }
 
@@ -152,10 +159,38 @@ export default function TranslateButton() {
         </div>
       )}
 
+      {/* Translating toast */}
+      {translating && (
+        <div
+          className="fixed bottom-6 left-1/2 z-[9999] flex items-center gap-2 px-4 py-2.5 rounded-xl shadow-xl text-sm font-semibold"
+          style={{
+            transform: 'translateX(-50%)',
+            background: 'rgba(0,17,58,0.92)',
+            color: '#ffe088',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(255,224,136,0.25)',
+            animation: 'toastIn 0.2s ease',
+          }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+            style={{ animation: 'spin 0.8s linear infinite', flexShrink: 0 }}>
+            <path d="M21 12a9 9 0 11-6.219-8.56"/>
+          </svg>
+          Translating page…
+        </div>
+      )}
+
       <style>{`
         @keyframes dropIn {
           from { opacity: 0; transform: translateY(-6px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes toastIn {
+          from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+          to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        @keyframes spin {
+          to { transform: rotate(360deg); }
         }
       `}</style>
     </div>

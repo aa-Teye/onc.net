@@ -20,7 +20,7 @@ export default function ContactInfo() {
               <span className="text-sm font-bold text-secondary">8:00 AM</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-[18px]">Wednesday Midweek</span>
+              <span className="text-[18px]">Tuesday Midweek</span>
               <span className="text-sm font-bold text-secondary">6:30 PM</span>
             </div>
           </div>

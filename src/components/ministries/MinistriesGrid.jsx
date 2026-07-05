@@ -6,7 +6,7 @@ const ministries = [
     title: 'The Haven',
     body: 'Our youth ministry is a vibrant hub for teenagers and young adults to discover their identity in Christ. We combine high-energy worship with deep biblical truth to equip the next generation of leaders.',
     details: [
-      { icon: 'event', text: 'Weekly Gatherings: Fridays 6PM' },
+      { icon: 'event', text: 'Weekly Gatherings: Fridays 5:55 PM' },
       { icon: 'groups', text: 'Small Group Mentorship' },
     ],
     iconColor: 'text-secondary',

@@ -7,7 +7,7 @@ const announcements = [
   'Mandate Miracle Encounter Service — Join Us Every Week',
   "Children's Church — Every Sunday during service",
   'Covered Women Network — Quarterly Retreat coming soon',
-  'The Haven Youth Ministry — Fridays 6:00 PM',
+  'The Haven Youth Ministry — Fridays 5:55 PM',
   'ONBI Enrolment Now Open — Contact us to register',
   'Overcomers Nation — Tesano, Accra, Ghana  |  +233 54 636 3957',
 ]

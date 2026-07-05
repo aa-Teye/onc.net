@@ -55,8 +55,8 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-3" style={{ color: '#cdd6f4', fontSize: '14px', lineHeight: 1.5 }}>
               <span>Sunday — 8:00 AM</span>
-              <span>Wednesday — 6:30 PM</span>
-              <span>Friday (Youth) — 6:00 PM</span>
+              <span>Tuesday — 6:30 PM</span>
+              <span>Friday (Youth) — 5:55 PM</span>
               <span style={{ color: '#9aa9d6' }}>Tesano, Accra, Ghana</span>
             </div>
           </div>

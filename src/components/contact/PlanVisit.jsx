@@ -18,7 +18,7 @@ const details = [
   {
     icon: 'schedule',
     label: 'Midweek Service',
-    lines: ['Wednesday, 6:30 PM'],
+    lines: ['Tuesday, 6:30 PM'],
   },
   {
     icon: 'call',

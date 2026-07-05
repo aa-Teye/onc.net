@@ -84,7 +84,7 @@ export default function Live() {
               </div>
               <div className="flex items-center gap-2 text-sm text-white/70">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary-fixed/80" />
-                <span className="font-semibold">Wednesday Midweek — 6:30 PM</span>
+                <span className="font-semibold">Tuesday Midweek — 6:30 PM</span>
               </div>
             </div>
           </div>

@@ -15,9 +15,9 @@ const messages = [
     badge: null,
   },
   {
-    id: 'ccaQMT3EDx4',
-    title: 'The Power in the Name of Jesus',
-    speaker: 'Rev Dr Ebenezer Okronipa',
+    id: 'Azb7wu-opAk',
+    title: 'What God Builds, Hell Attacks',
+    speaker: 'Overcomers Nation Church',
     badge: null,
   },
 ]
@@ -67,8 +67,8 @@ export default function MediaSection() {
                     <img
                       alt={msg.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      src={`https://img.youtube.com/vi/${msg.id}/maxresdefault.jpg`}
-                      onError={e => { e.target.src = `https://img.youtube.com/vi/${msg.id}/hqdefault.jpg` }}
+                      src={`https://img.youtube.com/vi/${msg.id}/hqdefault.jpg`}
+                      onError={e => { e.target.src = `https://img.youtube.com/vi/${msg.id}/mqdefault.jpg` }}
                     />
                     <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
                     <div className="absolute inset-0 flex items-center justify-center">

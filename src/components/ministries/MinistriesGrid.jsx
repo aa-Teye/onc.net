@@ -45,6 +45,21 @@ const ministries = [
     alt: "Men's Ministry - The Faithful Men",
   },
   {
+    tag: '55+',
+    tagClass: 'bg-secondary text-on-primary',
+    borderClass: 'border-secondary',
+    title: 'The Flourishing Group',
+    body: 'A dedicated community for members 55 years and above to thrive in wisdom, faith and fellowship. We celebrate the season of flourishing — where experience meets purpose and every year is a testament to God\'s faithfulness.',
+    details: [
+      { icon: 'favorite', text: 'Fellowship & Community Care' },
+      { icon: 'menu_book', text: 'Bible Study & Prayer Meetings' },
+    ],
+    iconColor: 'text-secondary',
+    btn: { label: 'Join The Flourishing Group', style: 'bg-secondary text-on-primary hover:bg-primary' },
+    src: '/images/mandate.jpg',
+    alt: 'The Flourishing Group — 55+ Ministry',
+  },
+  {
     tag: 'WOMEN',
     tagClass: 'bg-tertiary-container text-on-tertiary-container',
     borderClass: 'border-primary',

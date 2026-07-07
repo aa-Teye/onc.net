@@ -7,6 +7,7 @@ import LeadershipSection from '../components/LeadershipSection'
 import GallerySection from '../components/GallerySection'
 import TestimoniesSlider from '../components/TestimoniesSlider'
 import MediaSection from '../components/MediaSection'
+import NewsletterSection from '../components/NewsletterSection'
 import CTASection from '../components/CTASection'
 
 export default function Home() {
@@ -32,6 +33,9 @@ export default function Home() {
 
       {/* Media / Sermons */}
       <MediaSection />
+
+      {/* Newsletter */}
+      <NewsletterSection />
 
       {/* CTA */}
       <CTASection />

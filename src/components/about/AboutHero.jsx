@@ -15,10 +15,10 @@ export default function AboutHero() {
           className="text-[48px] md:text-[72px] font-black text-surface-container-lowest mb-2 uppercase leading-tight"
           style={{ letterSpacing: '-0.04em' }}
         >
-          PARTNERSHIP
+          Events & Outreach
         </h2>
         <p className="text-[18px] text-primary-fixed max-w-2xl mx-auto leading-relaxed">
-          Built on the unwavering truth of the Gospel, bridging the wisdom of tradition with the fire of the next generation.
+          Flagship events, ongoing community outreaches and ministerial resources — everything happening in and through Overcomers Nation.
         </p>
       </div>
     </section>

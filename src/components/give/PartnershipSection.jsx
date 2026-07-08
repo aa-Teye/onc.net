@@ -1,0 +1,122 @@
+const tiers = [
+  {
+    icon: 'favorite',
+    name: 'Kingdom Seed Partner',
+    amount: 'Any Amount',
+    desc: 'Every seed counts. Join as a Kingdom Seed Partner with any regular monthly gift and be part of what God is building through Overcomers Nation.',
+    perks: ['Monthly newsletter', 'Partner prayer updates', 'Access to ministerial resources'],
+    highlight: false,
+  },
+  {
+    icon: 'star',
+    name: 'Covenant Partner',
+    amount: 'GHS 100 / month',
+    desc: 'Step into a deeper level of commitment. Covenant Partners are the backbone of this ministry — fuelling outreaches, media and discipleship.',
+    perks: ['All Seed Partner benefits', 'Quarterly partner devotional', 'Name in our prayer wall', 'Partner appreciation events'],
+    highlight: true,
+  },
+  {
+    icon: 'military_tech',
+    name: 'Kingdom Champion',
+    amount: 'GHS 500 / month',
+    desc: 'Champion the vision at the highest level. Kingdom Champions directly fund missions, ONBI scholarships and community outreaches.',
+    perks: ['All Covenant Partner benefits', 'Direct line to ministry office', 'Annual partner dinner with Dr. Okronipa', 'Dedicated intercession for your family'],
+    highlight: false,
+  },
+]
+
+export default function PartnershipSection() {
+  return (
+    <section className="py-[100px] px-8 bg-surface">
+      <div className="max-w-[1280px] mx-auto">
+
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="text-secondary text-xs font-bold uppercase tracking-[0.3em]">Join the Vision</span>
+          <h2
+            className="text-[40px] md:text-[52px] font-extrabold text-primary mt-3 leading-tight"
+            style={{ letterSpacing: '-0.02em' }}
+          >
+            Become a Ministry Partner
+          </h2>
+          <p className="text-on-surface-variant mt-4 max-w-2xl mx-auto text-base leading-relaxed">
+            Partnership is more than giving — it is a covenant relationship. When you partner with Overcomers Nation
+            you share in every soul won, every life transformed and every community impacted.
+          </p>
+          <p className="text-secondary font-bold mt-3 text-sm italic">
+            "And my God will supply every need of yours according to his riches in glory in Christ Jesus." — Phil 4:19
+          </p>
+        </div>
+
+        {/* Tiers */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {tiers.map((tier, i) => (
+            <div
+              key={i}
+              className={`relative rounded-2xl p-8 flex flex-col transition-all duration-300 ${
+                tier.highlight
+                  ? 'bg-primary text-on-primary shadow-2xl scale-[1.02]'
+                  : 'bg-surface-container-low border border-outline-variant/30 hover:border-secondary/40 hover:shadow-lg'
+              }`}
+            >
+              {tier.highlight && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-secondary text-on-primary text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full">
+                    Most Popular
+                  </span>
+                </div>
+              )}
+
+              {/* Icon */}
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                style={{ background: tier.highlight ? 'rgba(255,214,91,0.15)' : 'rgba(0,17,58,0.06)' }}
+              >
+                <span className={`material-symbols-outlined text-[22px] ${tier.highlight ? 'text-secondary' : 'text-primary'}`}>
+                  {tier.icon}
+                </span>
+              </div>
+
+              <h3 className={`text-[20px] font-extrabold mb-1 ${tier.highlight ? 'text-white' : 'text-primary'}`}>
+                {tier.name}
+              </h3>
+              <p className={`text-sm font-bold mb-4 ${tier.highlight ? 'text-secondary' : 'text-secondary'}`}>
+                {tier.amount}
+              </p>
+              <p className={`text-sm leading-relaxed mb-6 flex-1 ${tier.highlight ? 'text-white/70' : 'text-on-surface-variant'}`}>
+                {tier.desc}
+              </p>
+
+              <ul className="space-y-2 mb-8">
+                {tier.perks.map((perk, j) => (
+                  <li key={j} className="flex items-center gap-2 text-sm">
+                    <span className={`material-symbols-outlined text-[16px] flex-shrink-0 ${tier.highlight ? 'text-secondary' : 'text-secondary'}`}>
+                      check_circle
+                    </span>
+                    <span className={tier.highlight ? 'text-white/80' : 'text-on-surface-variant'}>{perk}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                className={`w-full py-3 rounded-xl text-sm font-extrabold uppercase tracking-widest transition-all active:scale-95 ${
+                  tier.highlight
+                    ? 'bg-secondary text-on-primary hover:bg-secondary/90'
+                    : 'bg-primary text-on-primary hover:bg-primary/90'
+                }`}
+              >
+                Become a Partner
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom note */}
+        <p className="text-center text-on-surface-variant text-sm">
+          All partnership amounts are in Ghanaian Cedis. International partners —&nbsp;
+          <a href="/contact" className="text-secondary font-bold hover:underline">contact us</a> for bank transfer details.
+        </p>
+      </div>
+    </section>
+  )
+}

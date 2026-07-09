@@ -46,15 +46,19 @@ export default function GivingMethods() {
               </div>
               <h3 className="text-[32px] font-bold text-primary mb-4 leading-tight">Mobile Money</h3>
               <p className="text-base text-on-surface-variant mb-8 leading-relaxed">
-                Direct support via MTN or Telecel Mobile Money. Use our shortcode for instant tithing.
+                Give conveniently via MTN MoMo or Telecel Cash. Contact the church office for the mobile number.
               </p>
             </div>
-            <div className="bg-surface-container p-4 rounded mb-6 text-center border border-outline-variant">
-              <span className="text-sm font-bold text-primary">*789*123#</span>
+            <div className="bg-surface-container p-4 rounded mb-6 border border-outline-variant flex items-center gap-3">
+              <span className="material-symbols-outlined text-secondary text-xl">info</span>
+              <span className="text-sm text-on-surface-variant">Number available at the front desk or church office</span>
             </div>
-            <button className="bg-primary text-on-primary py-4 text-sm font-bold rounded transition-all active:scale-95">
-              View Instructions
-            </button>
+            <a
+              href="/contact"
+              className="bg-primary text-on-primary py-4 text-sm font-bold rounded transition-all active:scale-95 text-center block hover:bg-primary/90"
+            >
+              Contact Church Office
+            </a>
           </div>
 
           {/* Bank Transfer */}

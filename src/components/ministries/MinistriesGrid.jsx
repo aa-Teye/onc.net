@@ -56,7 +56,7 @@ const ministries = [
     ],
     iconColor: 'text-secondary',
     btn: { label: 'Join The Flourishing Group', style: 'bg-secondary text-on-primary hover:bg-primary' },
-    src: '/images/mandate.jpg',
+    src: '/images/flourishing.jpg',
     alt: 'The Flourishing Group — 55+ Ministry',
   },
   {

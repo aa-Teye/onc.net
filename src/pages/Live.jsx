@@ -223,50 +223,66 @@ export default function Live() {
                 <div className="absolute inset-0 pointer-events-none"
                   style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(255,214,91,0.06) 0%, transparent 70%)' }} />
 
-                <div className="relative z-10 flex flex-col items-center text-center px-6 py-10 md:py-14 gap-8">
+                <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-8 py-8 md:py-12 gap-6">
 
                   {/* Not-live badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <span className="material-symbols-outlined text-secondary text-[16px]">schedule</span>
-                    <span className="text-white/60 text-xs font-bold uppercase tracking-widest">Not streaming yet</span>
+                    <span className="material-symbols-outlined text-secondary text-[15px]">schedule</span>
+                    <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">Not streaming yet</span>
                   </div>
 
                   {/* Next service label + date */}
                   <div>
-                    <p className="text-secondary text-xs font-black uppercase tracking-[0.25em] mb-1">
+                    <p className="text-secondary text-[11px] font-black uppercase tracking-[0.2em] mb-1">
                       Next — {countdown.label}
                     </p>
-                    <p className="text-white/50 text-sm">{countdown.dateStr}</p>
+                    <p className="text-white/45 text-xs sm:text-sm">{countdown.dateStr}</p>
                   </div>
 
-                  {/* Countdown timer */}
-                  <div className="flex items-start gap-2 sm:gap-4">
+                  {/* Countdown timer — mobile-first sizing */}
+                  <div className="flex items-start justify-center gap-1 sm:gap-3">
                     {[
                       { v: countdown.days,    l: 'Days'  },
                       { v: countdown.hours,   l: 'Hours' },
                       { v: countdown.minutes, l: 'Mins'  },
                       { v: countdown.seconds, l: 'Secs'  },
                     ].map(({ v, l }, i, arr) => (
-                      <div key={l} className="flex items-start gap-2 sm:gap-4">
+                      <div key={l} className="flex items-start gap-1 sm:gap-3">
                         <div className="flex flex-col items-center">
-                          <div className="rounded-xl px-3 py-2 sm:px-5 sm:py-3 min-w-[56px] sm:min-w-[72px] text-center"
-                            style={{ background: 'rgba(255,214,91,0.08)', border: '1px solid rgba(255,214,91,0.2)', boxShadow: '0 0 16px rgba(255,214,91,0.07)' }}>
-                            <span className="text-[28px] sm:text-[40px] font-black text-white leading-none">
+                          <div
+                            className="rounded-lg sm:rounded-xl text-center"
+                            style={{
+                              padding: 'clamp(6px,2vw,14px) clamp(10px,3vw,20px)',
+                              minWidth: 'clamp(44px,11vw,72px)',
+                              background: 'rgba(255,214,91,0.08)',
+                              border: '1px solid rgba(255,214,91,0.2)',
+                            }}
+                          >
+                            <span
+                              className="font-black text-white leading-none block"
+                              style={{ fontSize: 'clamp(20px,6vw,40px)' }}
+                            >
                               {String(v).padStart(2, '0')}
                             </span>
                           </div>
-                          <span className="text-secondary text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mt-1.5">{l}</span>
+                          <span className="text-secondary font-bold uppercase tracking-widest mt-1.5"
+                            style={{ fontSize: 'clamp(8px,2vw,10px)' }}>
+                            {l}
+                          </span>
                         </div>
                         {i < arr.length - 1 && (
-                          <span className="text-secondary/60 text-[22px] sm:text-[34px] font-bold mt-1 leading-none">:</span>
+                          <span className="text-secondary/50 font-bold leading-none mt-0.5"
+                            style={{ fontSize: 'clamp(18px,5vw,32px)' }}>
+                            :
+                          </span>
                         )}
                       </div>
                     ))}
                   </div>
 
                   {/* Weekly schedule */}
-                  <div className="w-full max-w-sm">
+                  <div className="w-full" style={{ maxWidth: 'min(100%, 340px)' }}>
                     <p className="text-white/30 text-[10px] uppercase tracking-widest mb-3">Weekly Schedule</p>
                     <div className="grid grid-cols-7 gap-1">
                       {DAYS_SHORT.map((d, i) => {
@@ -274,22 +290,28 @@ export default function Live() {
                         const svc = SERVICES.find(s => s.day === i)
                         return (
                           <div key={d} className="flex flex-col items-center gap-1">
-                            <span className={`text-[10px] font-bold uppercase ${isServiceDay ? 'text-secondary' : 'text-white/20'}`}>{d}</span>
+                            <span className={`text-[9px] sm:text-[10px] font-bold uppercase ${isServiceDay ? 'text-secondary' : 'text-white/20'}`}>
+                              {d}
+                            </span>
                             <div
-                              className="w-8 h-8 rounded-lg flex items-center justify-center transition-all"
-                              style={isServiceDay
-                                ? { background: 'rgba(255,214,91,0.15)', border: '1px solid rgba(255,214,91,0.4)' }
-                                : { background: 'rgba(255,255,255,0.03)' }
-                              }
+                              className="rounded-md sm:rounded-lg flex items-center justify-center"
+                              style={{
+                                width: 'clamp(28px,8vw,36px)',
+                                height: 'clamp(28px,8vw,36px)',
+                                ...(isServiceDay
+                                  ? { background: 'rgba(255,214,91,0.15)', border: '1px solid rgba(255,214,91,0.4)' }
+                                  : { background: 'rgba(255,255,255,0.03)' }),
+                              }}
                             >
                               {isServiceDay
-                                ? <span className="material-symbols-outlined text-secondary text-[14px]">church</span>
+                                ? <span className="material-symbols-outlined text-secondary" style={{ fontSize: 'clamp(12px,3.5vw,16px)' }}>church</span>
                                 : <span className="w-1 h-1 rounded-full bg-white/15" />
                               }
                             </div>
                             {isServiceDay && svc && (
-                              <span className="text-secondary/60 text-[8px] font-bold leading-tight text-center">
-                                {svc.hour === 8 ? '8 AM' : svc.hour === 18 ? '6:30P' : '5:55P'}
+                              <span className="text-secondary/60 font-bold leading-tight text-center"
+                                style={{ fontSize: 'clamp(7px,1.8vw,9px)' }}>
+                                {svc.hour === 8 ? '8AM' : svc.hour === 18 ? '6:30P' : '5:55P'}
                               </span>
                             )}
                           </div>
@@ -298,23 +320,21 @@ export default function Live() {
                     </div>
                   </div>
 
-                  {/* Watch Live button → opens YouTube */}
-                  <a
-                    href="https://www.youtube.com/@overcomersnationchurch2041/live"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-extrabold text-base transition-all hover:scale-105 active:scale-95"
+                  {/* Watch Now — loads embed inline, stays on site */}
+                  <button
+                    onClick={() => setShowEmbed(true)}
+                    className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-extrabold text-sm sm:text-base w-full sm:w-auto justify-center transition-all hover:scale-105 active:scale-95"
                     style={{
                       background: 'linear-gradient(135deg, #735c00, #ffe088)',
                       color: '#00113a',
                       boxShadow: '0 0 30px rgba(255,224,136,0.15)',
                     }}
                   >
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                     </svg>
-                    Watch Live on YouTube
-                  </a>
+                    Watch Live Now
+                  </button>
 
                 </div>
               </div>

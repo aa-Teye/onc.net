@@ -4,7 +4,6 @@ const images = [
   { w: 'w-[350px]', h: 'h-[450px]', rotate: 'rotate-2',  src: '/images/children-singing.jpg' },
   { w: 'w-[500px]', h: 'h-[380px]', rotate: '-rotate-1', src: '/images/at-gallery-image.jpg' },
   { w: 'w-[320px]', h: 'h-[420px]', rotate: 'rotate-3',  src: '/images/gallery-image.jpg' },
-  { w: 'w-[400px]', h: 'h-[480px]', rotate: '-rotate-3', src: '/images/photo_2026-03-08_14-26-35.jpg' },
   { w: 'w-[380px]', h: 'h-[360px]', rotate: 'rotate-2',  src: '/images/photo_2026-05-10_21-30-39.jpg' },
   { w: 'w-[420px]', h: 'h-[440px]', rotate: '-rotate-1', src: '/images/children-day-3.jpg' },
   { w: 'w-[340px]', h: 'h-[400px]', rotate: 'rotate-1',  src: '/images/youth-worship.jpg' },

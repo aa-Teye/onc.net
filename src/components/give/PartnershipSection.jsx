@@ -1,31 +1,165 @@
+import { useState, useEffect } from 'react'
+
+// TODO: Replace with your Paystack public key from dashboard.paystack.com
+const PAYSTACK_KEY = 'pk_live_YOUR_KEY_HERE'
+
 const tiers = [
   {
     icon: 'favorite',
     name: 'Kingdom Seed Partner',
-    amount: 'Any Amount',
+    amount: '',
+    amountNum: 0,
     desc: 'Every seed counts. Join as a Kingdom Seed Partner with any regular monthly gift and be part of what God is building through Overcomers Nation.',
     perks: ['Monthly newsletter', 'Partner prayer updates', 'Access to ministerial resources'],
     highlight: false,
+    placeholder: 'Enter amount (GHS)',
   },
   {
     icon: 'star',
     name: 'Covenant Partner',
-    amount: 'GHS 100 / month',
+    amount: 'GHS 100',
+    amountNum: 100,
     desc: 'Step into a deeper level of commitment. Covenant Partners are the backbone of this ministry — fuelling outreaches, media and discipleship.',
     perks: ['All Seed Partner benefits', 'Quarterly partner devotional', 'Name in our prayer wall', 'Partner appreciation events'],
     highlight: true,
+    placeholder: null,
   },
   {
     icon: 'military_tech',
     name: 'Kingdom Champion',
-    amount: 'GHS 500 / month',
+    amount: 'GHS 500',
+    amountNum: 500,
     desc: 'Champion the vision at the highest level. Kingdom Champions directly fund missions, ONBI scholarships and community outreaches.',
     perks: ['All Covenant Partner benefits', 'Direct line to ministry office', 'Annual partner dinner with Dr. Okronipa', 'Dedicated intercession for your family'],
     highlight: false,
+    placeholder: null,
   },
 ]
 
+function PartnerForm({ tier, onClose }) {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', amount: tier.amountNum || '' })
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+
+  useEffect(() => {
+    if (!document.getElementById('paystack-script')) {
+      const script = document.createElement('script')
+      script.id = 'paystack-script'
+      script.src = 'https://js.paystack.co/v1/inline.js'
+      document.body.appendChild(script)
+    }
+  }, [])
+
+  function handleChange(e) {
+    setForm(f => ({ ...f, [e.target.name]: e.target.value }))
+  }
+
+  function handlePay(e) {
+    e.preventDefault()
+    const amt = parseFloat(form.amount)
+    if (!form.name || !form.email || !amt) return
+
+    setLoading(true)
+
+    const handler = window.PaystackPop.setup({
+      key: PAYSTACK_KEY,
+      email: form.email,
+      amount: amt * 100,
+      currency: 'GHS',
+      ref: 'ONC_PARTNER_' + Date.now(),
+      metadata: {
+        custom_fields: [
+          { display_name: 'Full Name',         variable_name: 'name',  value: form.name },
+          { display_name: 'Phone',             variable_name: 'phone', value: form.phone },
+          { display_name: 'Partnership Tier',  variable_name: 'tier',  value: tier.name },
+        ],
+      },
+      onSuccess: () => { setLoading(false); setSuccess(true) },
+      onCancel:  () => setLoading(false),
+    })
+    handler.openIframe()
+  }
+
+  if (success) {
+    return (
+      <div className="text-center py-8 px-4">
+        <span className="material-symbols-outlined text-secondary text-[56px]">check_circle</span>
+        <h3 className="text-primary text-2xl font-extrabold mt-4 mb-2">Welcome, Partner!</h3>
+        <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
+          Thank you for becoming a <strong>{tier.name}</strong>. Your commitment is received and
+          your name is added to our prayer wall. God bless you!
+        </p>
+        <button
+          onClick={onClose}
+          className="bg-primary text-on-primary px-8 py-3 rounded-xl text-sm font-bold"
+        >
+          Close
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={handlePay} className="p-6 sm:p-8">
+      <h3 className="text-primary text-xl font-extrabold mb-1">{tier.name}</h3>
+      <p className="text-secondary text-sm font-bold mb-6">{tier.amount || 'Custom amount'}</p>
+
+      <div className="space-y-4">
+        <div>
+          <label className="text-xs font-bold text-on-surface-variant uppercase tracking-widest block mb-1">Full Name *</label>
+          <input
+            name="name" required value={form.name} onChange={handleChange}
+            placeholder="Your full name"
+            className="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm outline-none focus:border-secondary transition-colors bg-surface"
+          />
+        </div>
+        <div>
+          <label className="text-xs font-bold text-on-surface-variant uppercase tracking-widest block mb-1">Email Address *</label>
+          <input
+            name="email" type="email" required value={form.email} onChange={handleChange}
+            placeholder="your@email.com"
+            className="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm outline-none focus:border-secondary transition-colors bg-surface"
+          />
+        </div>
+        <div>
+          <label className="text-xs font-bold text-on-surface-variant uppercase tracking-widest block mb-1">Phone Number</label>
+          <input
+            name="phone" value={form.phone} onChange={handleChange}
+            placeholder="+233 XX XXX XXXX"
+            className="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm outline-none focus:border-secondary transition-colors bg-surface"
+          />
+        </div>
+        {tier.amountNum === 0 && (
+          <div>
+            <label className="text-xs font-bold text-on-surface-variant uppercase tracking-widest block mb-1">Amount (GHS) *</label>
+            <input
+              name="amount" type="number" min="1" required value={form.amount} onChange={handleChange}
+              placeholder="Enter amount"
+              className="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm outline-none focus:border-secondary transition-colors bg-surface"
+            />
+          </div>
+        )}
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full mt-6 py-4 rounded-xl text-sm font-extrabold uppercase tracking-widest transition-all active:scale-95"
+        style={{ background: loading ? 'rgba(115,92,0,0.5)' : 'linear-gradient(135deg, #735c00, #ffe088)', color: '#00113a' }}
+      >
+        {loading ? 'Opening payment…' : `Pay ${tier.amountNum ? 'GHS ' + tier.amountNum : (form.amount ? 'GHS ' + form.amount : '')} →`}
+      </button>
+
+      <p className="text-center text-on-surface-variant text-xs mt-4">
+        Secured by Paystack · Card, MoMo & Bank Transfer accepted
+      </p>
+    </form>
+  )
+}
+
 export default function PartnershipSection() {
+  const [selectedTier, setSelectedTier] = useState(null)
+
   return (
     <section className="py-[100px] px-8 bg-surface">
       <div className="max-w-[1280px] mx-auto">
@@ -67,21 +201,18 @@ export default function PartnershipSection() {
                 </div>
               )}
 
-              {/* Icon */}
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                 style={{ background: tier.highlight ? 'rgba(255,214,91,0.15)' : 'rgba(0,17,58,0.06)' }}
               >
-                <span className={`material-symbols-outlined text-[22px] ${tier.highlight ? 'text-secondary' : 'text-primary'}`}>
-                  {tier.icon}
-                </span>
+                <span className="material-symbols-outlined text-secondary text-[22px]">{tier.icon}</span>
               </div>
 
               <h3 className={`text-[20px] font-extrabold mb-1 ${tier.highlight ? 'text-white' : 'text-primary'}`}>
                 {tier.name}
               </h3>
-              <p className={`text-sm font-bold mb-4 ${tier.highlight ? 'text-secondary' : 'text-secondary'}`}>
-                {tier.amount}
+              <p className="text-sm font-bold mb-4 text-secondary">
+                {tier.amount || 'Any Amount'}
               </p>
               <p className={`text-sm leading-relaxed mb-6 flex-1 ${tier.highlight ? 'text-white/70' : 'text-on-surface-variant'}`}>
                 {tier.desc}
@@ -90,15 +221,14 @@ export default function PartnershipSection() {
               <ul className="space-y-2 mb-8">
                 {tier.perks.map((perk, j) => (
                   <li key={j} className="flex items-center gap-2 text-sm">
-                    <span className={`material-symbols-outlined text-[16px] flex-shrink-0 ${tier.highlight ? 'text-secondary' : 'text-secondary'}`}>
-                      check_circle
-                    </span>
+                    <span className="material-symbols-outlined text-secondary text-[16px] flex-shrink-0">check_circle</span>
                     <span className={tier.highlight ? 'text-white/80' : 'text-on-surface-variant'}>{perk}</span>
                   </li>
                 ))}
               </ul>
 
               <button
+                onClick={() => setSelectedTier(tier)}
                 className={`w-full py-3 rounded-xl text-sm font-extrabold uppercase tracking-widest transition-all active:scale-95 ${
                   tier.highlight
                     ? 'bg-secondary text-on-primary hover:bg-secondary/90'
@@ -111,12 +241,37 @@ export default function PartnershipSection() {
           ))}
         </div>
 
-        {/* Bottom note */}
         <p className="text-center text-on-surface-variant text-sm">
-          All partnership amounts are in Ghanaian Cedis. International partners —&nbsp;
-          <a href="/contact" className="text-secondary font-bold hover:underline">contact us</a> for bank transfer details.
+          All amounts are in Ghanaian Cedis. International partners —&nbsp;
+          <a href="/contact" className="text-secondary font-bold hover:underline">contact us</a> for details.
         </p>
       </div>
+
+      {/* Modal */}
+      {selectedTier && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center px-4"
+          style={{ background: 'rgba(0,17,58,0.85)', backdropFilter: 'blur(8px)' }}
+          onClick={e => { if (e.target === e.currentTarget) setSelectedTier(null) }}
+        >
+          <div className="bg-surface rounded-2xl w-full max-w-md shadow-2xl relative overflow-hidden">
+            <button
+              onClick={() => setSelectedTier(null)}
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant hover:bg-outline-variant transition-colors"
+            >
+              <span className="material-symbols-outlined text-[18px]">close</span>
+            </button>
+            <PartnerForm tier={selectedTier} onClose={() => setSelectedTier(null)} />
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes livePulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50%       { opacity: 0.4; transform: scale(0.85); }
+        }
+      `}</style>
     </section>
   )
 }

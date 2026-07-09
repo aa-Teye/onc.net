@@ -1,51 +1,57 @@
 const outreaches = [
   {
+    icon: 'campaign',
+    color: '#fed65b',
+    tag: 'Evangelism',
+    title: 'Encounter Jesus Outreach',
+    desc: 'Our flagship ongoing outreach — taking the Gospel to the streets, markets and communities with signs, wonders and the undeniable presence of God. Every soul matters and every encounter is intentional.',
+    stat: 'Ongoing — across communities',
+    featured: true,
+  },
+  {
     icon: 'volunteer_activism',
     color: '#fed65b',
     tag: 'Community',
-    title: 'Bread of Life Feeding Drive',
-    desc: 'Every quarter, ONC volunteers take to the streets of Tesano and surrounding communities to distribute hot meals, groceries and care packages to the less privileged.',
-    stat: '500+ fed quarterly',
+    title: 'Community Care Drive',
+    desc: 'ONC volunteers reach out to the less privileged in Tesano and surrounding areas with food, care packages and the love of Christ.',
+    stat: 'Coming soon',
+    featured: false,
   },
   {
     icon: 'school',
     color: '#fed65b',
     tag: 'Education',
     title: 'Back to School Initiative',
-    desc: 'We partner with local schools to provide stationery, uniforms and school bags to children from low-income families before every academic year begins.',
-    stat: '200+ children supported yearly',
-  },
-  {
-    icon: 'campaign',
-    color: '#fed65b',
-    tag: 'Evangelism',
-    title: 'Open-Air Gospel Crusades',
-    desc: 'Our evangelism team regularly hosts open-air crusades in public spaces, markets and neighbourhoods — bringing the gospel to those who have never stepped inside a church.',
-    stat: 'Monthly crusades across Accra',
+    desc: 'Providing stationery, uniforms and school bags to children from low-income families — investing in the next generation.',
+    stat: 'Coming soon',
+    featured: false,
   },
   {
     icon: 'local_hospital',
     color: '#fed65b',
     tag: 'Healthcare',
-    title: 'ONC Health & Wellness Fair',
-    desc: 'In partnership with medical professionals, we host free health screenings, blood pressure checks, eye tests and health education sessions for the community.',
-    stat: 'Annual free medical outreach',
+    title: 'Health & Wellness Fair',
+    desc: 'Free health screenings, blood pressure checks and health education sessions run in partnership with medical professionals.',
+    stat: 'Coming soon',
+    featured: false,
   },
   {
     icon: 'elderly',
     color: '#fed65b',
     tag: 'Seniors',
     title: 'Flourishing Seniors Visit',
-    desc: 'Members of The Flourishing Group and volunteers visit orphanages, elderly care homes and hospitals to pray, sing and bring companionship to those who feel forgotten.',
-    stat: 'Bi-monthly visits',
+    desc: 'Visits to elderly care homes and hospitals — bringing prayer, music and companionship to those who need it most.',
+    stat: 'Coming soon',
+    featured: false,
   },
   {
     icon: 'home_heart',
     color: '#fed65b',
     tag: 'Support',
     title: 'Kingdom Family Relief Fund',
-    desc: 'A confidential fund that provides emergency support — food, rent, utilities — to families within and outside the church going through sudden hardship.',
-    stat: 'On-going, needs-based',
+    desc: 'Emergency support for families in sudden hardship — food, rent and utilities provided confidentially through the church.',
+    stat: 'Coming soon',
+    featured: false,
   },
 ]
 
@@ -72,8 +78,12 @@ export default function OutreachSection() {
           {outreaches.map((o, i) => (
             <div
               key={i}
-              className="group rounded-xl p-7 border border-white/10 hover:border-secondary/50 transition-all duration-300"
-              style={{ background: 'rgba(255,255,255,0.04)' }}
+              className={`group rounded-xl p-7 border transition-all duration-300 ${
+                o.featured
+                  ? 'border-secondary/60 hover:border-secondary col-span-1 md:col-span-2 lg:col-span-1'
+                  : 'border-white/10 hover:border-secondary/50'
+              }`}
+              style={{ background: o.featured ? 'rgba(255,214,91,0.07)' : 'rgba(255,255,255,0.04)' }}
             >
               {/* Icon */}
               <div
@@ -100,8 +110,9 @@ export default function OutreachSection() {
 
               {/* Stat */}
               <div className="flex items-center gap-2 pt-4 border-t border-white/10">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0" />
-                <span className="text-xs font-bold text-secondary/80">{o.stat}</span>
+                <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${o.featured ? 'bg-green-400' : 'bg-secondary'}`}
+                  style={o.featured ? { animation: 'livePulse 1.5s ease-in-out infinite' } : {}} />
+                <span className={`text-xs font-bold ${o.featured ? 'text-green-400' : 'text-secondary/80'}`}>{o.stat}</span>
               </div>
             </div>
           ))}

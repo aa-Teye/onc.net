@@ -2,7 +2,13 @@ import { useState } from 'react'
 import Layout from '../components/Layout'
 import { Link } from 'react-router-dom'
 
-const YT_CHANNEL = 'https://www.youtube.com/@overcomersnationchurch2041'
+// ──────────────────────────────────────────────────────
+// PASTE YOUR YOUTUBE CHANNEL ID HERE (starts with "UC")
+// Find it: studio.youtube.com → Settings → Channel → Advanced settings
+const CHANNEL_ID = 'UCxxxxxxxxxxxxxxxxxxxxxxxx'
+// ──────────────────────────────────────────────────────
+
+const LIVE_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1&rel=0&modestbranding=1`
 
 const recentSermons = [
   {
@@ -103,13 +109,15 @@ function SermonCard({ video }) {
 }
 
 export default function Live() {
+  const [showEmbed, setShowEmbed] = useState(false)
+
   return (
     <Layout>
       <section className="min-h-screen pt-16" style={{ background: 'linear-gradient(to bottom, #00113a 0%, #000d28 100%)' }}>
         <div className="max-w-[1100px] mx-auto px-6 py-16">
 
           {/* Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full"
               style={{ background: 'rgba(255,0,0,0.12)', border: '1px solid rgba(255,0,0,0.25)' }}>
               <span className="w-2.5 h-2.5 rounded-full bg-red-500 flex-shrink-0"
@@ -132,12 +140,12 @@ export default function Live() {
               </span>
             </h1>
 
-            <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed mb-8">
+            <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed mb-6">
               Tune in to our Sunday services and midweek messages from anywhere in the world.
             </p>
 
             {/* Service times */}
-            <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
+            <div className="flex flex-wrap items-center justify-center gap-6 mb-8">
               <div className="flex items-center gap-2 text-sm text-white/70">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0" />
                 <span className="font-semibold">Sunday Service — 8:00 AM</span>
@@ -147,24 +155,85 @@ export default function Live() {
                 <span className="font-semibold">Tuesday Midweek — 6:30 PM</span>
               </div>
             </div>
+          </div>
 
-            {/* Main CTA — Watch Live on YouTube */}
-            <a
-              href={`${YT_CHANNEL}/live`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-extrabold text-base transition-all hover:scale-105 active:scale-95"
-              style={{
-                background: 'linear-gradient(135deg, #735c00, #ffe088)',
-                color: '#00113a',
-                boxShadow: '0 0 30px rgba(255,224,136,0.25)',
-              }}
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-              Watch Live on YouTube
-            </a>
+          {/* ── LIVE EMBED PLAYER ── */}
+          <div className="mb-14">
+            {!showEmbed ? (
+              /* Off-air / pre-click state */
+              <div
+                className="relative w-full rounded-2xl overflow-hidden flex flex-col items-center justify-center text-center"
+                style={{
+                  aspectRatio: '16/9',
+                  background: 'linear-gradient(135deg, rgba(255,214,91,0.06) 0%, rgba(0,17,58,0.95) 100%)',
+                  border: '1px solid rgba(255,214,91,0.18)',
+                }}
+              >
+                {/* Decorative glow */}
+                <div className="absolute inset-0 pointer-events-none"
+                  style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,214,91,0.07) 0%, transparent 70%)' }} />
+
+                <div className="relative z-10 flex flex-col items-center gap-6 px-6">
+                  {/* Live icon */}
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center"
+                    style={{ background: 'rgba(255,0,0,0.12)', border: '1.5px solid rgba(255,0,0,0.3)' }}>
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36" className="text-red-400">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </div>
+
+                  <div>
+                    <p className="text-white text-xl font-extrabold mb-1">Join Us Live</p>
+                    <p className="text-white/50 text-sm max-w-sm">
+                      Click below to open the live stream. If service is not currently live, you'll see the most recent broadcast.
+                    </p>
+                  </div>
+
+                  {/* Watch Live button */}
+                  <button
+                    onClick={() => setShowEmbed(true)}
+                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-extrabold text-base transition-all hover:scale-105 active:scale-95"
+                    style={{
+                      background: 'linear-gradient(135deg, #735c00, #ffe088)',
+                      color: '#00113a',
+                      boxShadow: '0 0 30px rgba(255,224,136,0.2)',
+                    }}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    Watch Live Now
+                  </button>
+
+                  <a
+                    href={`https://www.youtube.com/@overcomersnationchurch2041/live`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/40 text-xs hover:text-secondary transition-colors"
+                  >
+                    Open in YouTube instead →
+                  </a>
+                </div>
+              </div>
+            ) : (
+              /* Active embed */
+              <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                <iframe
+                  className="w-full h-full"
+                  src={LIVE_EMBED}
+                  title="Overcomers Nation Church Live"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowFullScreen
+                  style={{ border: 'none' }}
+                />
+                <button
+                  onClick={() => setShowEmbed(false)}
+                  className="absolute top-3 right-3 z-10 w-9 h-9 bg-black/70 hover:bg-black text-white rounded-full flex items-center justify-center transition-colors"
+                >
+                  <span className="material-symbols-outlined text-[18px]">close</span>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Divider */}

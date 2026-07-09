@@ -15,11 +15,10 @@ export default function FeaturedSermon() {
       >
         <img
           className="w-full h-full object-cover opacity-60"
-          alt="ONC sermon stage"
-          src={`https://img.youtube.com/vi/${FEATURED_ID}/maxresdefault.jpg`}
-          onError={e => { e.target.src = `https://img.youtube.com/vi/${FEATURED_ID}/hqdefault.jpg` }}
+          alt="A powerful cinematic shot of a modern church stage"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj2HTj7q0EWCVM48s8FTfsmFkUfVWoegl6n9_ELrmjFJe8s4nA0MrrB7pmiYTmBdKhyKt2Jz4Xd5ImFxRQMnt4YHvTGbY_xEiPBy0rnJ2ug-K7YFZ0gLoauD9cH2bgGJ6V2t1EfJR49elWdmikIaoB0oWtt2d6qmyi3UNe1fo68IzwcLCp0EzrVPfxDG6cAyDl5SRb_OWsF9Nli5GO3cMTBMadzVKCEcoam1D95aXRwU3ws7rHXgIzrOq2CLetvQrlMDBj2369m7Ej"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-primary/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
       </div>
 
       {/* Cinematic iframe overlay */}

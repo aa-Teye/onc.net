@@ -225,11 +225,32 @@ export default function Live() {
 
                 <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-8 py-8 md:py-12 gap-6">
 
+                  {/* Ongoing event banner */}
+                  <div
+                    className="w-full rounded-xl px-4 py-3 flex items-center gap-3"
+                    style={{ background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,80,80,0.3)' }}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"
+                      style={{ animation: 'livePulse 1.5s ease-in-out infinite' }} />
+                    <div className="text-left flex-1 min-w-0">
+                      <p className="text-red-300 text-[10px] font-black uppercase tracking-widest leading-none mb-0.5">Ongoing Now</p>
+                      <p className="text-white text-xs sm:text-sm font-bold leading-snug truncate">
+                        30 Days of Change of Story — Fasting &amp; Prayers
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setShowEmbed(true)}
+                      className="flex-shrink-0 text-red-300 text-[10px] font-bold uppercase tracking-wide hover:text-white transition-colors"
+                    >
+                      Watch →
+                    </button>
+                  </div>
+
                   {/* Not-live badge */}
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
                     <span className="material-symbols-outlined text-secondary text-[15px]">schedule</span>
-                    <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">Not streaming yet</span>
+                    <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">Next regular service</span>
                   </div>
 
                   {/* Next service label + date */}
@@ -284,7 +305,7 @@ export default function Live() {
                   {/* Weekly schedule */}
                   <div className="w-full" style={{ maxWidth: 'min(100%, 340px)' }}>
                     <p className="text-white/30 text-[10px] uppercase tracking-widest mb-3">Weekly Schedule</p>
-                    <div className="grid grid-cols-7 gap-1">
+                    <div className="grid grid-cols-7 gap-1.5">
                       {DAYS_SHORT.map((d, i) => {
                         const isServiceDay = SERVICE_DAYS.has(i)
                         const svc = SERVICES.find(s => s.day === i)
@@ -294,22 +315,22 @@ export default function Live() {
                               {d}
                             </span>
                             <div
-                              className="rounded-md sm:rounded-lg flex items-center justify-center"
+                              className="rounded-lg flex flex-col items-center justify-center"
                               style={{
-                                width: 'clamp(28px,8vw,36px)',
-                                height: 'clamp(28px,8vw,36px)',
+                                width: 'clamp(30px,8.5vw,38px)',
+                                height: 'clamp(30px,8.5vw,38px)',
                                 ...(isServiceDay
-                                  ? { background: 'rgba(255,214,91,0.15)', border: '1px solid rgba(255,214,91,0.4)' }
-                                  : { background: 'rgba(255,255,255,0.03)' }),
+                                  ? { background: 'rgba(255,214,91,0.18)', border: '1.5px solid rgba(255,214,91,0.5)' }
+                                  : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }),
                               }}
                             >
                               {isServiceDay
-                                ? <span className="material-symbols-outlined text-secondary" style={{ fontSize: 'clamp(12px,3.5vw,16px)' }}>church</span>
-                                : <span className="w-1 h-1 rounded-full bg-white/15" />
+                                ? <span className="w-2 h-2 rounded-full bg-secondary" />
+                                : <span className="w-1 h-1 rounded-full bg-white/20" />
                               }
                             </div>
                             {isServiceDay && svc && (
-                              <span className="text-secondary/60 font-bold leading-tight text-center"
+                              <span className="text-secondary/70 font-bold leading-tight text-center"
                                 style={{ fontSize: 'clamp(7px,1.8vw,9px)' }}>
                                 {svc.hour === 8 ? '8AM' : svc.hour === 18 ? '6:30P' : '5:55P'}
                               </span>

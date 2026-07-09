@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 // ──────────────────────────────────────────────────────
 // PASTE YOUR YOUTUBE CHANNEL ID HERE (starts with "UC")
 // Find it: studio.youtube.com → Settings → Channel → Advanced settings
-const CHANNEL_ID = 'UCxxxxxxxxxxxxxxxxxxxxxxxx'
+const CHANNEL_ID = 'UC_l58cOXpmAOR5GaOzMUXmQ'
 // ──────────────────────────────────────────────────────
 
 const LIVE_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1&rel=0&modestbranding=1`

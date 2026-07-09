@@ -1,6 +1,56 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Layout from '../components/Layout'
 import { Link } from 'react-router-dom'
+
+const SERVICES = [
+  { label: 'Sunday Service',   day: 0, hour: 8,  minute: 0  },
+  { label: 'Tuesday Midweek', day: 2, hour: 18, minute: 30 },
+  { label: 'Friday Haven',    day: 5, hour: 17, minute: 55 },
+]
+
+function getNextService() {
+  const now = new Date()
+  let soonest = null
+  let soonestMs = Infinity
+
+  for (const svc of SERVICES) {
+    const candidate = new Date(now)
+    candidate.setHours(svc.hour, svc.minute, 0, 0)
+    let diff = svc.day - now.getDay()
+    if (diff < 0 || (diff === 0 && candidate <= now)) diff += 7
+    candidate.setDate(now.getDate() + diff)
+    const ms = candidate - now
+    if (ms < soonestMs) { soonestMs = ms; soonest = { svc, date: candidate, ms } }
+  }
+  return soonest
+}
+
+const DAYS_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const SERVICE_DAYS = new Set(SERVICES.map(s => s.day))
+
+function useCountdown() {
+  const [state, setState] = useState({ label: '', dateStr: '', days: 0, hours: 0, minutes: 0, seconds: 0 })
+  useEffect(() => {
+    const tick = () => {
+      const next = getNextService()
+      if (!next) return
+      const { svc, date, ms } = next
+      setState({
+        label: svc.label,
+        dateStr: date.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })
+          + ' · ' + date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+        days:    Math.floor(ms / 86400000),
+        hours:   Math.floor((ms % 86400000) / 3600000),
+        minutes: Math.floor((ms % 3600000) / 60000),
+        seconds: Math.floor((ms % 60000) / 1000),
+      })
+    }
+    tick()
+    const id = setInterval(tick, 1000)
+    return () => clearInterval(id)
+  }, [])
+  return state
+}
 
 // ──────────────────────────────────────────────────────
 // PASTE YOUR YOUTUBE CHANNEL ID HERE (starts with "UC")
@@ -110,6 +160,7 @@ function SermonCard({ video }) {
 
 export default function Live() {
   const [showEmbed, setShowEmbed] = useState(false)
+  const countdown = useCountdown()
 
   return (
     <Layout>
@@ -160,59 +211,111 @@ export default function Live() {
           {/* ── LIVE EMBED PLAYER ── */}
           <div className="mb-14">
             {!showEmbed ? (
-              /* Off-air / pre-click state */
+              /* Off-air state — countdown + schedule */
               <div
-                className="relative w-full rounded-2xl overflow-hidden flex flex-col items-center justify-center text-center"
+                className="relative w-full rounded-2xl overflow-hidden"
                 style={{
-                  aspectRatio: '16/9',
-                  background: 'linear-gradient(135deg, rgba(255,214,91,0.06) 0%, rgba(0,17,58,0.95) 100%)',
-                  border: '1px solid rgba(255,214,91,0.18)',
+                  background: 'linear-gradient(135deg, rgba(255,214,91,0.05) 0%, rgba(0,13,40,0.98) 100%)',
+                  border: '1px solid rgba(255,214,91,0.15)',
                 }}
               >
-                {/* Decorative glow */}
+                {/* Glow */}
                 <div className="absolute inset-0 pointer-events-none"
-                  style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,214,91,0.07) 0%, transparent 70%)' }} />
+                  style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(255,214,91,0.06) 0%, transparent 70%)' }} />
 
-                <div className="relative z-10 flex flex-col items-center gap-6 px-6">
-                  {/* Live icon */}
-                  <div className="w-20 h-20 rounded-full flex items-center justify-center"
-                    style={{ background: 'rgba(255,0,0,0.12)', border: '1.5px solid rgba(255,0,0,0.3)' }}>
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36" className="text-red-400">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
+                <div className="relative z-10 flex flex-col items-center text-center px-6 py-10 md:py-14 gap-8">
+
+                  {/* Not-live badge */}
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
+                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <span className="material-symbols-outlined text-secondary text-[16px]">schedule</span>
+                    <span className="text-white/60 text-xs font-bold uppercase tracking-widest">Not streaming yet</span>
                   </div>
 
+                  {/* Next service label + date */}
                   <div>
-                    <p className="text-white text-xl font-extrabold mb-1">Join Us Live</p>
-                    <p className="text-white/50 text-sm max-w-sm">
-                      Click below to open the live stream. If service is not currently live, you'll see the most recent broadcast.
+                    <p className="text-secondary text-xs font-black uppercase tracking-[0.25em] mb-1">
+                      Next — {countdown.label}
                     </p>
+                    <p className="text-white/50 text-sm">{countdown.dateStr}</p>
                   </div>
 
-                  {/* Watch Live button */}
-                  <button
-                    onClick={() => setShowEmbed(true)}
+                  {/* Countdown timer */}
+                  <div className="flex items-start gap-2 sm:gap-4">
+                    {[
+                      { v: countdown.days,    l: 'Days'  },
+                      { v: countdown.hours,   l: 'Hours' },
+                      { v: countdown.minutes, l: 'Mins'  },
+                      { v: countdown.seconds, l: 'Secs'  },
+                    ].map(({ v, l }, i, arr) => (
+                      <div key={l} className="flex items-start gap-2 sm:gap-4">
+                        <div className="flex flex-col items-center">
+                          <div className="rounded-xl px-3 py-2 sm:px-5 sm:py-3 min-w-[56px] sm:min-w-[72px] text-center"
+                            style={{ background: 'rgba(255,214,91,0.08)', border: '1px solid rgba(255,214,91,0.2)', boxShadow: '0 0 16px rgba(255,214,91,0.07)' }}>
+                            <span className="text-[28px] sm:text-[40px] font-black text-white leading-none">
+                              {String(v).padStart(2, '0')}
+                            </span>
+                          </div>
+                          <span className="text-secondary text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mt-1.5">{l}</span>
+                        </div>
+                        {i < arr.length - 1 && (
+                          <span className="text-secondary/60 text-[22px] sm:text-[34px] font-bold mt-1 leading-none">:</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Weekly schedule */}
+                  <div className="w-full max-w-sm">
+                    <p className="text-white/30 text-[10px] uppercase tracking-widest mb-3">Weekly Schedule</p>
+                    <div className="grid grid-cols-7 gap-1">
+                      {DAYS_SHORT.map((d, i) => {
+                        const isServiceDay = SERVICE_DAYS.has(i)
+                        const svc = SERVICES.find(s => s.day === i)
+                        return (
+                          <div key={d} className="flex flex-col items-center gap-1">
+                            <span className={`text-[10px] font-bold uppercase ${isServiceDay ? 'text-secondary' : 'text-white/20'}`}>{d}</span>
+                            <div
+                              className="w-8 h-8 rounded-lg flex items-center justify-center transition-all"
+                              style={isServiceDay
+                                ? { background: 'rgba(255,214,91,0.15)', border: '1px solid rgba(255,214,91,0.4)' }
+                                : { background: 'rgba(255,255,255,0.03)' }
+                              }
+                            >
+                              {isServiceDay
+                                ? <span className="material-symbols-outlined text-secondary text-[14px]">church</span>
+                                : <span className="w-1 h-1 rounded-full bg-white/15" />
+                              }
+                            </div>
+                            {isServiceDay && svc && (
+                              <span className="text-secondary/60 text-[8px] font-bold leading-tight text-center">
+                                {svc.hour === 8 ? '8 AM' : svc.hour === 18 ? '6:30P' : '5:55P'}
+                              </span>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Watch Live button → opens YouTube */}
+                  <a
+                    href="https://www.youtube.com/@overcomersnationchurch2041/live"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-extrabold text-base transition-all hover:scale-105 active:scale-95"
                     style={{
                       background: 'linear-gradient(135deg, #735c00, #ffe088)',
                       color: '#00113a',
-                      boxShadow: '0 0 30px rgba(255,224,136,0.2)',
+                      boxShadow: '0 0 30px rgba(255,224,136,0.15)',
                     }}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                     </svg>
-                    Watch Live Now
-                  </button>
-
-                  <a
-                    href={`https://www.youtube.com/@overcomersnationchurch2041/live`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/40 text-xs hover:text-secondary transition-colors"
-                  >
-                    Open in YouTube instead →
+                    Watch Live on YouTube
                   </a>
+
                 </div>
               </div>
             ) : (

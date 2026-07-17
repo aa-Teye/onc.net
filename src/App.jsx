@@ -15,10 +15,10 @@ function ScrollToTop() {
   return null
 }
 
-export default function App() {
+function AnimatedRoutes() {
+  const { pathname } = useLocation()
   return (
-    <BrowserRouter>
-      <ScrollToTop />
+    <div key={pathname} className="page-enter">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -28,6 +28,15 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/live" element={<Live />} />
       </Routes>
+    </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <AnimatedRoutes />
     </BrowserRouter>
   )
 }

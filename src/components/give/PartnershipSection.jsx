@@ -10,7 +10,6 @@ const tiers = [
     amount: '',
     amountNum: 0,
     desc: 'Every seed counts. Join as a Kingdom Seed Partner with any regular monthly gift and be part of what God is building through Overcomers Nation.',
-    perks: ['Monthly newsletter', 'Partner prayer updates', 'Access to ministerial resources'],
     highlight: false,
     placeholder: 'Enter amount (GHS)',
   },
@@ -20,7 +19,6 @@ const tiers = [
     amount: 'GHS 100',
     amountNum: 100,
     desc: 'Step into a deeper level of commitment. Covenant Partners are the backbone of this ministry — fuelling outreaches, media and discipleship.',
-    perks: ['All Seed Partner benefits', 'Quarterly partner devotional', 'Name in our prayer wall', 'Partner appreciation events'],
     highlight: true,
     placeholder: null,
   },
@@ -30,7 +28,6 @@ const tiers = [
     amount: 'GHS 500',
     amountNum: 500,
     desc: 'Champion the vision at the highest level. Kingdom Champions directly fund missions, ONBI scholarships and community outreaches.',
-    perks: ['All Covenant Partner benefits', 'Direct line to ministry office', 'Annual partner dinner with Dr. Okronipa', 'Dedicated intercession for your family'],
     highlight: false,
     placeholder: null,
   },
@@ -217,15 +214,6 @@ export default function PartnershipSection() {
               <p className={`text-sm leading-relaxed mb-6 flex-1 ${tier.highlight ? 'text-white/70' : 'text-on-surface-variant'}`}>
                 {tier.desc}
               </p>
-
-              <ul className="space-y-2 mb-8">
-                {tier.perks.map((perk, j) => (
-                  <li key={j} className="flex items-center gap-2 text-sm">
-                    <span className="material-symbols-outlined text-secondary text-[16px] flex-shrink-0">check_circle</span>
-                    <span className={tier.highlight ? 'text-white/80' : 'text-on-surface-variant'}>{perk}</span>
-                  </li>
-                ))}
-              </ul>
 
               <button
                 onClick={() => setSelectedTier(tier)}

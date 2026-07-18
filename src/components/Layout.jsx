@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -41,8 +41,20 @@ function useSectionReveal() {
   }, [pathname])
 }
 
+function useScrolledDown(threshold = 80) {
+  const [scrolled, setScrolled] = useState(false)
+  useEffect(() => {
+    const check = () => setScrolled(window.scrollY > threshold)
+    check()
+    window.addEventListener('scroll', check, { passive: true })
+    return () => window.removeEventListener('scroll', check)
+  }, [threshold])
+  return scrolled
+}
+
 export default function Layout({ children, showFloating = true }) {
   const pastHero = useScrolledPastHero()
+  const scrolledDown = useScrolledDown(80)
   useSectionReveal()
 
   return (
@@ -55,17 +67,30 @@ export default function Layout({ children, showFloating = true }) {
       <Footer />
 
       {showFloating && (
-        <div
-          style={{
-            opacity: pastHero ? 1 : 0,
-            pointerEvents: pastHero ? 'auto' : 'none',
-            transition: 'opacity 0.5s ease',
-          }}
-        >
-          <SocialSidebar />
-          <WhatsAppButton />
-          <PrayerModal />
-        </div>
+        <>
+          {/* Social sidebar appears as soon as you scroll down */}
+          <div
+            style={{
+              opacity: scrolledDown ? 1 : 0,
+              pointerEvents: scrolledDown ? 'auto' : 'none',
+              transition: 'opacity 0.4s ease',
+            }}
+          >
+            <SocialSidebar />
+          </div>
+
+          {/* WhatsApp + Prayer modal appear only after hero */}
+          <div
+            style={{
+              opacity: pastHero ? 1 : 0,
+              pointerEvents: pastHero ? 'auto' : 'none',
+              transition: 'opacity 0.5s ease',
+            }}
+          >
+            <WhatsAppButton />
+            <PrayerModal />
+          </div>
+        </>
       )}
     </div>
   )

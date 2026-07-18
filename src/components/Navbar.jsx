@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import TranslateButton from './TranslateButton'
@@ -15,10 +15,25 @@ const navKeys = [
 export default function Navbar() {
   const { t } = useTranslation()
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <>
-      <header className="fixed top-[4px] left-0 w-full h-16 px-4 flex justify-between items-center bg-surface/70 backdrop-blur-md z-50 border-b border-primary/20 shadow-sm">
+      <header
+        className="fixed top-[4px] left-0 w-full h-16 px-4 flex justify-between items-center z-50 border-b transition-all duration-300"
+        style={{
+          background: scrolled ? '#f8f9fa' : 'rgba(248,249,250,0.75)',
+          backdropFilter: 'blur(16px)',
+          borderColor: scrolled ? 'rgba(0,17,58,0.15)' : 'rgba(0,17,58,0.1)',
+          boxShadow: scrolled ? '0 2px 20px rgba(0,17,58,0.12)' : '0 1px 4px rgba(0,17,58,0.06)',
+        }}
+      >
 
         {/* Logo + Church name — always visible */}
         <NavLink to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>

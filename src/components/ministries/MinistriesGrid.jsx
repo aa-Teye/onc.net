@@ -26,7 +26,7 @@ const ministries = [
     ],
     iconColor: 'text-primary',
     btn: { label: 'Register Child', style: 'bg-primary text-on-primary hover:bg-secondary' },
-    src: '/images/children-day-1.jpg',
+    src: '/images/children-panel2.jpg',
     alt: "Children's Ministry",
   },
   {

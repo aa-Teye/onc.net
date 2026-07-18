@@ -1,13 +1,135 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+const PAYSTACK_KEY = 'pk_test_4ca05c4f5ba99328e539a67aab15a35040d31904'
 
 const BANK_DETAILS = `Bank: Republic Bank
 Account Name: Ebenezer Okronipa Ministries
 Account No: 0076344843027
 Branch: Legon`
 
+function OnlineGiveModal({ onClose }) {
+  const [form, setForm] = useState({ name: '', email: '', amount: '' })
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+
+  useEffect(() => {
+    if (!document.getElementById('paystack-script')) {
+      const script = document.createElement('script')
+      script.id = 'paystack-script'
+      script.src = 'https://js.paystack.co/v1/inline.js'
+      document.body.appendChild(script)
+    }
+  }, [])
+
+  function handleChange(e) {
+    setForm(f => ({ ...f, [e.target.name]: e.target.value }))
+  }
+
+  function handlePay(e) {
+    e.preventDefault()
+    const amt = parseFloat(form.amount)
+    if (!form.name || !form.email || !amt) return
+    setLoading(true)
+    const handler = window.PaystackPop.setup({
+      key: PAYSTACK_KEY,
+      email: form.email,
+      amount: amt * 100,
+      currency: 'GHS',
+      ref: 'ONC_GIVE_' + Date.now(),
+      metadata: {
+        custom_fields: [
+          { display_name: 'Full Name', variable_name: 'name', value: form.name },
+        ],
+      },
+      onSuccess: () => { setLoading(false); setSuccess(true) },
+      onCancel: () => setLoading(false),
+    })
+    handler.openIframe()
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-[999] flex items-center justify-center px-4"
+      style={{ background: 'rgba(0,17,58,0.85)', backdropFilter: 'blur(8px)' }}
+      onClick={e => { if (e.target === e.currentTarget) onClose() }}
+    >
+      <div className="bg-surface rounded-2xl w-full max-w-md shadow-2xl relative overflow-hidden">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant hover:bg-outline-variant transition-colors"
+        >
+          <span className="material-symbols-outlined text-[18px]">close</span>
+        </button>
+
+        {success ? (
+          <div className="text-center py-10 px-6">
+            <span className="material-symbols-outlined text-secondary text-[56px]">check_circle</span>
+            <h3 className="text-primary text-2xl font-extrabold mt-4 mb-2">Thank You!</h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
+              Your gift has been received. God bless you for your generosity!
+            </p>
+            <button
+              onClick={onClose}
+              className="bg-primary text-on-primary px-8 py-3 rounded-xl text-sm font-bold"
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handlePay} className="p-6 sm:p-8">
+            <h3 className="text-primary text-xl font-extrabold mb-1">Give Online</h3>
+            <p className="text-on-surface-variant text-sm mb-6">Card, MoMo & Bank Transfer accepted via Paystack</p>
+
+            <div className="space-y-4">
+              <div>
+                <label className="text-xs font-bold text-on-surface-variant uppercase tracking-widest block mb-1">Full Name *</label>
+                <input
+                  name="name" required value={form.name} onChange={handleChange}
+                  placeholder="Your full name"
+                  className="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm outline-none focus:border-secondary transition-colors bg-surface"
+                />
+              </div>
+              <div>
+                <label className="text-xs font-bold text-on-surface-variant uppercase tracking-widest block mb-1">Email Address *</label>
+                <input
+                  name="email" type="email" required value={form.email} onChange={handleChange}
+                  placeholder="your@email.com"
+                  className="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm outline-none focus:border-secondary transition-colors bg-surface"
+                />
+              </div>
+              <div>
+                <label className="text-xs font-bold text-on-surface-variant uppercase tracking-widest block mb-1">Amount (GHS) *</label>
+                <input
+                  name="amount" type="number" min="1" required value={form.amount} onChange={handleChange}
+                  placeholder="Enter amount"
+                  className="w-full px-4 py-3 rounded-xl border border-outline-variant text-sm outline-none focus:border-secondary transition-colors bg-surface"
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full mt-6 py-4 rounded-xl text-sm font-extrabold uppercase tracking-widest transition-all active:scale-95"
+              style={{ background: loading ? 'rgba(115,92,0,0.5)' : 'linear-gradient(135deg, #735c00, #ffe088)', color: '#00113a' }}
+            >
+              {loading ? 'Opening payment…' : `Give${form.amount ? ' GHS ' + form.amount : ''} Now →`}
+            </button>
+
+            <p className="text-center text-on-surface-variant text-xs mt-4">
+              Secured by Paystack · Card, MoMo & Bank Transfer accepted
+            </p>
+          </form>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function GivingMethods() {
   const [copiedBank, setCopiedBank] = useState(false)
   const [copiedMomo, setCopiedMomo] = useState(false)
+  const [showGiveModal, setShowGiveModal] = useState(false)
 
   function copyBank() {
     navigator.clipboard.writeText(BANK_DETAILS)
@@ -46,8 +168,11 @@ export default function GivingMethods() {
                 Quick and secure giving via card or mobile money through our online portal. Available 24/7.
               </p>
             </div>
-            <button className="bg-secondary text-on-secondary py-4 text-sm font-bold rounded transition-all active:scale-95 hover:bg-on-secondary-fixed">
-              Coming Soon
+            <button
+              onClick={() => setShowGiveModal(true)}
+              className="bg-secondary text-on-secondary py-4 text-sm font-bold rounded transition-all active:scale-95 hover:bg-secondary/90"
+            >
+              Give Now
             </button>
           </div>
 
@@ -127,6 +252,8 @@ export default function GivingMethods() {
 
         </div>
       </div>
+
+      {showGiveModal && <OnlineGiveModal onClose={() => setShowGiveModal(false)} />}
     </section>
   )
 }

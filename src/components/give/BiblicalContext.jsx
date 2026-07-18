@@ -18,7 +18,7 @@ const cards = [
 
 export default function BiblicalContext() {
   return (
-    <section className="py-[120px] px-8 max-w-[1280px] mx-auto">
+    <section className="py-[60px] sm:py-[120px] px-4 sm:px-8 max-w-[1280px] mx-auto">
 
       {/* Quote — full width centred */}
       <div className="text-center max-w-3xl mx-auto mb-16">
@@ -33,7 +33,7 @@ export default function BiblicalContext() {
       {/* 3 cards — equal columns */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {cards.map((card, i) => (
-          <div key={i} className="bg-surface-container p-8 rounded-xl border border-outline-variant/30 hover:border-secondary/40 hover:shadow-lg transition-all duration-300">
+          <div key={i} className="bg-surface-container p-5 sm:p-8 rounded-xl border border-outline-variant/30 hover:border-secondary/40 hover:shadow-lg transition-all duration-300">
             <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-5">
               <span className="material-symbols-outlined text-secondary text-[22px]">{card.icon}</span>
             </div>

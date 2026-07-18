@@ -72,7 +72,7 @@ function SermonCard({ s }) {
             </span>
           )}
           <h4
-            className="text-[26px] md:text-[30px] font-bold group-hover:text-secondary transition-colors leading-tight"
+            className="text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] font-bold group-hover:text-secondary transition-colors leading-tight"
             onClick={() => setPlaying(true)}
           >
             {s.title}

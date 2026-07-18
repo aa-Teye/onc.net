@@ -53,7 +53,7 @@ function OnlineGiveModal({ onClose }) {
       style={{ background: 'rgba(0,17,58,0.85)', backdropFilter: 'blur(8px)' }}
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
-      <div className="bg-surface rounded-2xl w-full max-w-md shadow-2xl relative overflow-hidden">
+      <div className="bg-surface rounded-2xl w-full max-w-md shadow-2xl relative overflow-y-auto max-h-[90dvh]">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant hover:bg-outline-variant transition-colors"
@@ -144,10 +144,10 @@ export default function GivingMethods() {
   }
 
   return (
-    <section className="bg-primary py-[120px]">
-      <div className="px-8 max-w-[1280px] mx-auto">
+    <section className="bg-primary py-[60px] sm:py-[120px]">
+      <div className="px-4 sm:px-8 max-w-[1280px] mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-[48px] font-extrabold text-on-primary mb-4 leading-tight" style={{ letterSpacing: '-0.02em' }}>
+          <h2 className="text-[28px] sm:text-[40px] md:text-[48px] font-extrabold text-on-primary mb-4 leading-tight" style={{ letterSpacing: '-0.02em' }}>
             Choose Your Method
           </h2>
           <p className="text-[18px] text-primary-fixed-dim leading-relaxed">
@@ -158,12 +158,12 @@ export default function GivingMethods() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
           {/* Online Giving */}
-          <div className="bg-surface-container-lowest p-10 flex flex-col justify-between group hover:shadow-2xl transition-all duration-300 rounded-lg border-b-4 border-transparent hover:border-secondary">
+          <div className="bg-surface-container-lowest p-6 sm:p-10 flex flex-col justify-between group hover:shadow-2xl transition-all duration-300 rounded-lg border-b-4 border-transparent hover:border-secondary">
             <div>
               <div className="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-8">
                 <span className="material-symbols-outlined text-on-secondary-container text-3xl">payments</span>
               </div>
-              <h3 className="text-[32px] font-bold text-primary mb-4 leading-tight">Online Giving</h3>
+              <h3 className="text-[22px] sm:text-[26px] lg:text-[32px] font-bold text-primary mb-4 leading-tight">Online Giving</h3>
               <p className="text-base text-on-surface-variant mb-8 leading-relaxed">
                 Quick and secure giving via card or mobile money through our online portal. Available 24/7.
               </p>
@@ -177,12 +177,12 @@ export default function GivingMethods() {
           </div>
 
           {/* Mobile Money */}
-          <div className="bg-surface-container-lowest p-10 flex flex-col justify-between group hover:shadow-2xl transition-all duration-300 rounded-lg border-b-4 border-transparent hover:border-secondary">
+          <div className="bg-surface-container-lowest p-6 sm:p-10 flex flex-col justify-between group hover:shadow-2xl transition-all duration-300 rounded-lg border-b-4 border-transparent hover:border-secondary">
             <div>
               <div className="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-8">
                 <span className="material-symbols-outlined text-on-secondary-container text-3xl">smartphone</span>
               </div>
-              <h3 className="text-[32px] font-bold text-primary mb-4 leading-tight">Mobile Money</h3>
+              <h3 className="text-[22px] sm:text-[26px] lg:text-[32px] font-bold text-primary mb-4 leading-tight">Mobile Money</h3>
               <p className="text-base text-on-surface-variant mb-6 leading-relaxed">
                 Send via MTN MoMo to Overcomers Nation Church.
               </p>
@@ -214,12 +214,12 @@ export default function GivingMethods() {
           </div>
 
           {/* Bank Transfer */}
-          <div className="bg-surface-container-lowest p-10 flex flex-col justify-between group hover:shadow-2xl transition-all duration-300 rounded-lg border-b-4 border-transparent hover:border-secondary">
+          <div className="bg-surface-container-lowest p-6 sm:p-10 flex flex-col justify-between group hover:shadow-2xl transition-all duration-300 rounded-lg border-b-4 border-transparent hover:border-secondary">
             <div>
               <div className="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-8">
                 <span className="material-symbols-outlined text-on-secondary-container text-3xl">account_balance</span>
               </div>
-              <h3 className="text-[32px] font-bold text-primary mb-4 leading-tight">Bank Transfer</h3>
+              <h3 className="text-[22px] sm:text-[26px] lg:text-[32px] font-bold text-primary mb-4 leading-tight">Bank Transfer</h3>
               <p className="text-base text-on-surface-variant mb-6 leading-relaxed">
                 Direct bank transfer for local and international partners.
               </p>
@@ -231,7 +231,7 @@ export default function GivingMethods() {
               </div>
               <div className="flex justify-between border-b border-outline-variant py-2">
                 <span className="text-on-surface-variant text-sm">Acc Name</span>
-                <span className="text-sm font-bold text-primary">Ebenezer Okronipa Ministries</span>
+                <span className="text-sm font-bold text-primary text-right min-w-0 break-words">Ebenezer Okronipa Ministries</span>
               </div>
               <div className="flex justify-between border-b border-outline-variant py-2">
                 <span className="text-on-surface-variant text-sm">Acc No</span>

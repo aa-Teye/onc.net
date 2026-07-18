@@ -44,14 +44,14 @@ export default function HeroSection() {
       />
 
       {/* Main content — grows to fill available space, centers vertically */}
-      <div className="relative z-10 flex-1 flex items-center w-full max-w-[1600px] mx-auto px-8 md:px-16">
+      <div className="relative z-10 flex-1 flex items-center w-full max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16">
         <div style={{ maxWidth: '820px' }}>
 
           {/* Headline */}
           <h1
             className="font-black text-white mb-8"
             style={{
-              fontSize: 'clamp(48px, 5.5vw, 100px)',
+              fontSize: 'clamp(28px, 5.5vw, 100px)',
               letterSpacing: '-0.04em',
               lineHeight: 1.02,
             }}

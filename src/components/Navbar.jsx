@@ -45,7 +45,6 @@ export default function Navbar() {
             background: 'linear-gradient(135deg, #ffe088, #735c00, #ffe088)',
             backgroundSize: '200% 200%',
             animation: 'logoRing 3s linear infinite',
-            boxShadow: '0 0 12px rgba(255,224,136,0.7), 0 0 28px rgba(255,224,136,0.35)',
             flexShrink: 0,
           }}>
             <img
@@ -67,9 +66,9 @@ export default function Navbar() {
           </span>
           <style>{`
             @keyframes logoRing {
-              0%   { background-position: 0% 50%;   box-shadow: 0 0 12px rgba(255,224,136,0.7), 0 0 28px rgba(255,224,136,0.35); }
-              50%  { background-position: 100% 50%;  box-shadow: 0 0 20px rgba(255,224,136,1),   0 0 45px rgba(255,224,136,0.6); }
-              100% { background-position: 0% 50%;   box-shadow: 0 0 12px rgba(255,224,136,0.7), 0 0 28px rgba(255,224,136,0.35); }
+              0%   { background-position: 0% 50%; }
+              50%  { background-position: 100% 50%; }
+              100% { background-position: 0% 50%; }
             }
           `}</style>
         </NavLink>

@@ -158,14 +158,14 @@ export default function PartnershipSection() {
   const [selectedTier, setSelectedTier] = useState(null)
 
   return (
-    <section className="py-[100px] px-8 bg-surface">
+    <section className="py-[60px] sm:py-[100px] px-4 sm:px-8 bg-surface">
       <div className="max-w-[1280px] mx-auto">
 
         {/* Header */}
         <div className="text-center mb-16">
           <span className="text-secondary text-xs font-bold uppercase tracking-[0.3em]">Join the Vision</span>
           <h2
-            className="text-[40px] md:text-[52px] font-extrabold text-primary mt-3 leading-tight"
+            className="text-[26px] sm:text-[40px] md:text-[52px] font-extrabold text-primary mt-3 leading-tight"
             style={{ letterSpacing: '-0.02em' }}
           >
             Become a Ministry Partner
@@ -184,7 +184,7 @@ export default function PartnershipSection() {
           {tiers.map((tier, i) => (
             <div
               key={i}
-              className={`relative rounded-2xl p-8 flex flex-col transition-all duration-300 ${
+              className={`relative rounded-2xl p-5 sm:p-8 flex flex-col transition-all duration-300 ${
                 tier.highlight
                   ? 'bg-primary text-on-primary shadow-2xl scale-[1.02]'
                   : 'bg-surface-container-low border border-outline-variant/30 hover:border-secondary/40 hover:shadow-lg'
@@ -242,7 +242,7 @@ export default function PartnershipSection() {
           style={{ background: 'rgba(0,17,58,0.85)', backdropFilter: 'blur(8px)' }}
           onClick={e => { if (e.target === e.currentTarget) setSelectedTier(null) }}
         >
-          <div className="bg-surface rounded-2xl w-full max-w-md shadow-2xl relative overflow-hidden">
+          <div className="bg-surface rounded-2xl w-full max-w-md shadow-2xl relative overflow-y-auto max-h-[90dvh]">
             <button
               onClick={() => setSelectedTier(null)}
               className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant hover:bg-outline-variant transition-colors"

@@ -73,8 +73,8 @@ export default function CountdownSection() {
           style={{ letterSpacing: '-0.02em' }}>
           Next Sunday Worship Service
         </h3>
-        <p className="text-on-surface-variant text-sm mb-12 uppercase tracking-widest">
-          Every Sunday — 8:00 AM  |  Tesano, Accra, Ghana
+        <p className="text-on-surface-variant text-sm mb-12 uppercase tracking-wide">
+          Every Sunday — 8:00 AM &nbsp;|&nbsp; Tesano, Accra, Ghana
         </p>
 
         <div className="flex items-start justify-center gap-1 sm:gap-4 md:gap-8">

@@ -57,7 +57,7 @@ export default function EventsSection() {
         <div className="text-center mb-16">
           <span className="text-secondary text-xs font-bold uppercase tracking-[0.3em]">Mark Your Calendar</span>
           <h2
-            className="text-[40px] md:text-[52px] font-extrabold text-primary mt-3 leading-tight"
+            className="text-[26px] sm:text-[40px] md:text-[52px] font-extrabold text-primary mt-3 leading-tight"
             style={{ letterSpacing: '-0.02em' }}
           >
             Upcoming Events
@@ -83,7 +83,7 @@ export default function EventsSection() {
                   <span className="text-secondary text-[10px] font-black uppercase tracking-widest">{ev.month}</span>
                   <span className="text-white text-[22px] font-black leading-none">{ev.day}</span>
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1 rounded-full">
+                <span className="text-[10px] font-bold uppercase tracking-wide text-secondary bg-secondary/10 px-2 py-1 rounded-full text-right min-w-0 leading-snug">
                   {ev.type}
                 </span>
               </div>

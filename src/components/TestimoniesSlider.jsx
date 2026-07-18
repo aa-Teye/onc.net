@@ -282,28 +282,29 @@ export default function TestimoniesSlider() {
 
         {/* Tab switcher */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+          <div className="flex w-full max-w-xs sm:max-w-sm rounded-xl border border-outline-variant overflow-hidden shadow-sm">
             <button
               onClick={() => setTab('video')}
-              className={`flex items-center gap-2 px-6 py-3 text-sm font-bold transition-all ${
+              className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold transition-all ${
                 tab === 'video'
                   ? 'bg-primary text-on-primary'
                   : 'bg-surface text-on-surface-variant hover:bg-surface-container'
               }`}
             >
               <span className="material-symbols-outlined text-[18px]">play_circle</span>
-              Video Testimonies
+              <span className="hidden xs:inline">Video</span>
+              <span className="xs:hidden">Videos</span>
             </button>
             <button
               onClick={() => setTab('stories')}
-              className={`flex items-center gap-2 px-6 py-3 text-sm font-bold transition-all border-l border-outline-variant ${
+              className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold transition-all border-l border-outline-variant ${
                 tab === 'stories'
                   ? 'bg-primary text-on-primary'
                   : 'bg-surface text-on-surface-variant hover:bg-surface-container'
               }`}
             >
               <span className="material-symbols-outlined text-[18px]">auto_stories</span>
-              Written Stories
+              <span>Stories</span>
             </button>
           </div>
         </div>

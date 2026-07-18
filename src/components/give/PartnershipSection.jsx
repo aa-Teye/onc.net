@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 // TODO: Replace with your Paystack public key from dashboard.paystack.com
-const PAYSTACK_KEY = 'pk_live_YOUR_KEY_HERE'
+const PAYSTACK_KEY = 'pk_test_4ca05c4f5ba99328e539a67aab15a35040d31904'
 
 const tiers = [
   {

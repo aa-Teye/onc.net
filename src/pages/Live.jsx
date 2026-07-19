@@ -58,7 +58,7 @@ function useCountdown() {
 const CHANNEL_ID = 'UC_l58cOXpmAOR5GaOzMUXmQ'
 // ──────────────────────────────────────────────────────
 
-const LIVE_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1&rel=0&modestbranding=1`
+const LIVE_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0&iv_load_policy=3&color=white`
 
 const recentSermons = [
   {

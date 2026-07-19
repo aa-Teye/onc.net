@@ -159,7 +159,6 @@ function SermonCard({ video }) {
 }
 
 export default function Live() {
-  const [showEmbed, setShowEmbed] = useState(false)
   const countdown = useCountdown()
 
   return (
@@ -168,7 +167,7 @@ export default function Live() {
         <div className="max-w-[1100px] mx-auto px-6 py-16">
 
           {/* Header */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full"
               style={{ background: 'rgba(255,0,0,0.12)', border: '1px solid rgba(255,0,0,0.25)' }}>
               <span className="w-2.5 h-2.5 rounded-full bg-red-500 flex-shrink-0"
@@ -178,7 +177,7 @@ export default function Live() {
 
             <h1
               className="font-black text-white mb-4 leading-tight"
-              style={{ fontSize: 'clamp(36px, 6vw, 64px)', letterSpacing: '-0.03em' }}
+              style={{ fontSize: 'clamp(32px, 6vw, 64px)', letterSpacing: '-0.03em' }}
             >
               Watch Us{' '}
               <span style={{
@@ -191,193 +190,110 @@ export default function Live() {
               </span>
             </h1>
 
-            <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed mb-6">
-              Tune in to our Sunday services and midweek messages from anywhere in the world.
+            <p className="text-white/60 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+              Tune in to our services from anywhere in the world.
             </p>
+          </div>
 
-            {/* Service times */}
-            <div className="flex flex-wrap items-center justify-center gap-6 mb-8">
-              <div className="flex items-center gap-2 text-sm text-white/70">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0" />
-                <span className="font-semibold">Sunday Service — 8:00 AM</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-white/70">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0" />
-                <span className="font-semibold">Tuesday Midweek — 6:30 PM</span>
-              </div>
+          {/* ── LIVE EMBED — always visible ── */}
+          <div className="mb-10">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: '16/9' }}>
+              <iframe
+                className="w-full h-full"
+                src={LIVE_EMBED}
+                title="Overcomers Nation Church Live"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowFullScreen
+                style={{ border: 'none' }}
+              />
             </div>
           </div>
 
-          {/* ── LIVE EMBED PLAYER ── */}
-          <div className="mb-14">
-            {!showEmbed ? (
-              /* Off-air state — countdown + schedule */
-              <div
-                className="relative w-full rounded-2xl overflow-hidden"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255,214,91,0.05) 0%, rgba(0,13,40,0.98) 100%)',
-                  border: '1px solid rgba(255,214,91,0.15)',
-                }}
-              >
-                {/* Glow */}
-                <div className="absolute inset-0 pointer-events-none"
-                  style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(255,214,91,0.06) 0%, transparent 70%)' }} />
+          {/* Schedule strip */}
+          <div
+            className="rounded-2xl px-4 sm:px-8 py-6 mb-14 flex flex-col sm:flex-row items-center gap-6 justify-between"
+            style={{ background: 'rgba(255,214,91,0.05)', border: '1px solid rgba(255,214,91,0.15)' }}
+          >
+            {/* Next service countdown */}
+            <div className="flex flex-col items-center sm:items-start gap-1 text-center sm:text-left">
+              <p className="text-secondary text-[11px] font-black uppercase tracking-[0.2em]">
+                Next — {countdown.label}
+              </p>
+              <p className="text-white/45 text-xs">{countdown.dateStr}</p>
+            </div>
 
-                <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-8 py-8 md:py-12 gap-6">
-
-                  {/* Ongoing event banner */}
-                  <div
-                    className="w-full rounded-xl px-4 py-3 flex items-center gap-3"
-                    style={{ background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,80,80,0.3)' }}
-                  >
-                    <span className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"
-                      style={{ animation: 'livePulse 1.5s ease-in-out infinite' }} />
-                    <div className="text-left flex-1 min-w-0">
-                      <p className="text-red-300 text-[10px] font-black uppercase tracking-widest leading-none mb-0.5">Ongoing Now</p>
-                      <p className="text-white text-xs sm:text-sm font-bold leading-snug truncate">
-                        30 Days of Change of Story — Fasting &amp; Prayers
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => setShowEmbed(true)}
-                      className="flex-shrink-0 text-red-300 text-[10px] font-bold uppercase tracking-wide hover:text-white transition-colors"
+            {/* Countdown timer */}
+            <div className="flex items-start justify-center gap-1 sm:gap-2">
+              {[
+                { v: countdown.days,    l: 'Days'  },
+                { v: countdown.hours,   l: 'Hrs'   },
+                { v: countdown.minutes, l: 'Mins'  },
+                { v: countdown.seconds, l: 'Secs'  },
+              ].map(({ v, l }, i, arr) => (
+                <div key={l} className="flex items-start gap-1 sm:gap-2">
+                  <div className="flex flex-col items-center">
+                    <div
+                      className="rounded-lg text-center"
+                      style={{
+                        padding: 'clamp(4px,1.5vw,10px) clamp(8px,2.5vw,16px)',
+                        minWidth: 'clamp(40px,10vw,60px)',
+                        background: 'rgba(255,214,91,0.08)',
+                        border: '1px solid rgba(255,214,91,0.2)',
+                      }}
                     >
-                      Watch →
-                    </button>
-                  </div>
-
-                  {/* Not-live badge */}
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <span className="material-symbols-outlined text-secondary text-[15px]">schedule</span>
-                    <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">Next regular service</span>
-                  </div>
-
-                  {/* Next service label + date */}
-                  <div>
-                    <p className="text-secondary text-[11px] font-black uppercase tracking-[0.2em] mb-1">
-                      Next — {countdown.label}
-                    </p>
-                    <p className="text-white/45 text-xs sm:text-sm">{countdown.dateStr}</p>
-                  </div>
-
-                  {/* Countdown timer — mobile-first sizing */}
-                  <div className="flex items-start justify-center gap-1 sm:gap-3">
-                    {[
-                      { v: countdown.days,    l: 'Days'  },
-                      { v: countdown.hours,   l: 'Hours' },
-                      { v: countdown.minutes, l: 'Mins'  },
-                      { v: countdown.seconds, l: 'Secs'  },
-                    ].map(({ v, l }, i, arr) => (
-                      <div key={l} className="flex items-start gap-1 sm:gap-3">
-                        <div className="flex flex-col items-center">
-                          <div
-                            className="rounded-lg sm:rounded-xl text-center"
-                            style={{
-                              padding: 'clamp(6px,2vw,14px) clamp(10px,3vw,20px)',
-                              minWidth: 'clamp(44px,11vw,72px)',
-                              background: 'rgba(255,214,91,0.08)',
-                              border: '1px solid rgba(255,214,91,0.2)',
-                            }}
-                          >
-                            <span
-                              className="font-black text-white leading-none block"
-                              style={{ fontSize: 'clamp(20px,6vw,40px)' }}
-                            >
-                              {String(v).padStart(2, '0')}
-                            </span>
-                          </div>
-                          <span className="text-secondary font-bold uppercase tracking-widest mt-1.5"
-                            style={{ fontSize: 'clamp(8px,2vw,10px)' }}>
-                            {l}
-                          </span>
-                        </div>
-                        {i < arr.length - 1 && (
-                          <span className="text-secondary/50 font-bold leading-none mt-0.5"
-                            style={{ fontSize: 'clamp(18px,5vw,32px)' }}>
-                            :
-                          </span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Weekly schedule */}
-                  <div className="w-full" style={{ maxWidth: 'min(100%, 340px)' }}>
-                    <p className="text-white/30 text-[10px] uppercase tracking-widest mb-3">Weekly Schedule</p>
-                    <div className="grid grid-cols-7 gap-1.5">
-                      {DAYS_SHORT.map((d, i) => {
-                        const isServiceDay = SERVICE_DAYS.has(i)
-                        const svc = SERVICES.find(s => s.day === i)
-                        return (
-                          <div key={d} className="flex flex-col items-center gap-1">
-                            <span className={`text-[9px] sm:text-[10px] font-bold uppercase ${isServiceDay ? 'text-secondary' : 'text-white/20'}`}>
-                              {d}
-                            </span>
-                            <div
-                              className="rounded-lg flex flex-col items-center justify-center"
-                              style={{
-                                width: 'clamp(30px,8.5vw,38px)',
-                                height: 'clamp(30px,8.5vw,38px)',
-                                ...(isServiceDay
-                                  ? { background: 'rgba(255,214,91,0.18)', border: '1.5px solid rgba(255,214,91,0.5)' }
-                                  : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }),
-                              }}
-                            >
-                              {isServiceDay
-                                ? <span className="w-2 h-2 rounded-full bg-secondary" />
-                                : <span className="w-1 h-1 rounded-full bg-white/20" />
-                              }
-                            </div>
-                            {isServiceDay && svc && (
-                              <span className="text-secondary/70 font-bold leading-tight text-center"
-                                style={{ fontSize: 'clamp(7px,1.8vw,9px)' }}>
-                                {svc.hour === 8 ? '8AM' : svc.hour === 18 ? '6:30P' : '5:55P'}
-                              </span>
-                            )}
-                          </div>
-                        )
-                      })}
+                      <span className="font-black text-white leading-none block"
+                        style={{ fontSize: 'clamp(18px,5vw,32px)' }}>
+                        {String(v).padStart(2, '0')}
+                      </span>
                     </div>
+                    <span className="text-secondary font-bold uppercase tracking-widest mt-1"
+                      style={{ fontSize: 'clamp(7px,1.8vw,9px)' }}>
+                      {l}
+                    </span>
                   </div>
-
-                  {/* Watch Now — loads embed inline, stays on site */}
-                  <button
-                    onClick={() => setShowEmbed(true)}
-                    className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-extrabold text-sm sm:text-base w-full sm:w-auto justify-center transition-all hover:scale-105 active:scale-95"
-                    style={{
-                      background: 'linear-gradient(135deg, #735c00, #ffe088)',
-                      color: '#00113a',
-                      boxShadow: '0 0 30px rgba(255,224,136,0.15)',
-                    }}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    Watch Live Now
-                  </button>
-
+                  {i < arr.length - 1 && (
+                    <span className="text-secondary/50 font-bold leading-none mt-0.5"
+                      style={{ fontSize: 'clamp(16px,4vw,26px)' }}>
+                      :
+                    </span>
+                  )}
                 </div>
+              ))}
+            </div>
+
+            {/* Weekly schedule */}
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-white/30 text-[9px] uppercase tracking-widest">Weekly Schedule</p>
+              <div className="flex gap-1.5">
+                {DAYS_SHORT.map((d, i) => {
+                  const isServiceDay = SERVICE_DAYS.has(i)
+                  const svc = SERVICES.find(s => s.day === i)
+                  return (
+                    <div key={d} className="flex flex-col items-center gap-0.5">
+                      <span className={`text-[8px] font-bold uppercase ${isServiceDay ? 'text-secondary' : 'text-white/20'}`}>{d}</span>
+                      <div
+                        className="rounded flex items-center justify-center"
+                        style={{
+                          width: '28px', height: '28px',
+                          ...(isServiceDay
+                            ? { background: 'rgba(255,214,91,0.18)', border: '1.5px solid rgba(255,214,91,0.5)' }
+                            : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }),
+                        }}
+                      >
+                        {isServiceDay
+                          ? <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                          : <span className="w-1 h-1 rounded-full bg-white/20" />}
+                      </div>
+                      {isServiceDay && svc && (
+                        <span className="text-secondary/60 font-bold text-center" style={{ fontSize: '7px' }}>
+                          {svc.hour === 8 ? '8AM' : svc.hour === 18 ? '6:30P' : '5:55P'}
+                        </span>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
-            ) : (
-              /* Active embed */
-              <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
-                <iframe
-                  className="w-full h-full"
-                  src={LIVE_EMBED}
-                  title="Overcomers Nation Church Live"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                  allowFullScreen
-                  style={{ border: 'none' }}
-                />
-                <button
-                  onClick={() => setShowEmbed(false)}
-                  className="absolute top-3 right-3 z-10 w-9 h-9 bg-black/70 hover:bg-black text-white rounded-full flex items-center justify-center transition-colors"
-                >
-                  <span className="material-symbols-outlined text-[18px]">close</span>
-                </button>
-              </div>
-            )}
+            </div>
           </div>
 
           {/* Divider */}
